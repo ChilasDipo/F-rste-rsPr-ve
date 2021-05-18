@@ -1,7 +1,7 @@
 # Visions Dokument
 
 ## Vision:
-New Yorker vægge salgs appen gør det nemt for tømreren at “bestille” og prissætte New Yorker vægge så det nemt og hurtigt kan hjælpe deres kunder med at få den nye væg de drømmer om.
+New Yorker vægge salgs appen gør det nemt for tømreren at “bestille” og prissætte New Yorker vægge så de nemt og hurtigt kan hjælpe deres kunder med at få den nye væg de drømmer om.
 
 Applikationen gør at kontakten mellem tømrer og NewYorker hurtigt kan startes med en præcis prissættelse og en template for NewYorker så de nemt og hurtigt kan begynde produktionen at væggen. 
 
