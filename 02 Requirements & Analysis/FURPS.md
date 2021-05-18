@@ -16,8 +16,7 @@
 - Applikationen skal være klar til at bruge lige fra man åbner den.
 
 ## Supportability
-- 
-- 
+- Koden er open source så der er mulighed for at kunden kan få andre ind og vedligeholde applikationen
 
 ## Precision
 - Applikation skal beregne prisen helt nøjagtigt (2 decimaler) for simple vægge
