@@ -35,7 +35,7 @@ Ved Alvorlig sygdom skal den påvirkede videregive alle artefakter som er nødve
 
 |  Risiko | Sandsynlighed | Konsekvens | Prioritet | Revideret sandsynlighed | Revideret konsekvens |
 | ------------------------------------ | ---------------------------------------------------- | --------- | --------- | ------------------ |--------- |
-| Fagligtmartiale som vi ikke forstrå |100%| 8 timer | 8,0| 100% | 4 timer|
+| Fagligt materiale som vi ikke forstrå |100%| 8 timer | 8,0| 100% | 4 timer|
 
 **Imødekommelses strategi:**
 
