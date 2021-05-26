@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "415220156493",
+    "firebase_url": "https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "testing-cf64a",
+    "storage_bucket": "testing-cf64a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415220156493:android:a743ad1cb7595d2e52b404",
+        "android_client_info": {
+          "package_name": "com.example.newyorkerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415220156493-4trpm382pmr1n0v28qutq9hs2d814q4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWeT6flMdLcBTMB88mlk44TmAnJLfCDn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415220156493-4trpm382pmr1n0v28qutq9hs2d814q4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

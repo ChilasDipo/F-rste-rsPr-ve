@@ -22,6 +22,12 @@ public interface Wall {
      */
     double getAllowedAmountOfGlas();
 
+    double getHeightOfGlass();
+
+    double getLengthOfGlass();
+
+    double getPriceOfWall();
+
 
 
 }
