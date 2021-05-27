@@ -7,15 +7,15 @@ import java.math.RoundingMode;
 
 public class Wallimpl implements Wall {
     int fag , glas;
-    double height, length;          //TODO sætte alla variabler sammen en en eller 2 linjer
-    double heightOfGlass, lengthOfGlass;
-    double priceOfWall;
+    double height, length, heightOfGlass, lengthOfGlass,priceOfWall;
     FireBaseDAOimpl fireBaseDAOimpl = new FireBaseDAOimpl();
     public Wallimpl() {
         fag = 0;
         glas = 0;
         heightOfGlass = 60;
         lengthOfGlass = 45;
+        height=0;
+        length=0;
     }
     @Override
     public double getPriceOfWall() {
@@ -26,7 +26,7 @@ public class Wallimpl implements Wall {
     @Override
     public void setLength(int length) {
         this.length = length;
-        /*if (height!=0 & length !=0){
+       /* if (height!=0 & this.length !=0){
             calculateAmountOfFag();
             calculateAmountOfGlas();
         }*/
@@ -35,7 +35,7 @@ public class Wallimpl implements Wall {
     @Override
     public void setHeight(int height) {
         this.height = height;
-       /* if (height!=0 & length !=0){
+     /*   if (this.height!=0 & length !=0){
             calculateAmountOfFag();
             calculateAmountOfGlas();
         }*/
@@ -60,7 +60,9 @@ public class Wallimpl implements Wall {
     }
 
     private void calculateAmountOfFag(){
-       fag = (int) (length/ lengthOfGlass);
+
+        fag =  (int) Math.floor(length/ lengthOfGlass);
+
 
         if (length % lengthOfGlass != 0){
             lengthOfGlass++;
@@ -73,12 +75,13 @@ public class Wallimpl implements Wall {
         glas = (int) (height/ heightOfGlass);
 
 
-        if (height % heightOfGlass != 0){
+
+       if (height % heightOfGlass != 0){
             heightOfGlass++;
             calculateAmountOfGlas();
         }
 
-        heightOfGlass = height / (double)glas;
+       heightOfGlass = height / (double)glas;
     }
 
    private void calculatePriceOfWall(){
@@ -87,9 +90,7 @@ public class Wallimpl implements Wall {
        int numberOfGlasInWall = fag * glas;
         priceOfWall = numberOfGlasInWall*fireBaseDAOimpl.getPriceOfGlass();
     }
-
     private void buildOutputString(){
 
     }
-
 }

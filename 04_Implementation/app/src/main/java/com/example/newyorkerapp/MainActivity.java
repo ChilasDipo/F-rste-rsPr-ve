@@ -15,7 +15,6 @@ import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
     EditText brede , hight;
-    Button send;
     TextView price, width, height, fag, glas;
     Wallimpl wall = new Wallimpl();
     @Override
@@ -30,16 +29,17 @@ public class MainActivity extends AppCompatActivity {
         fag = (TextView) findViewById(R.id.amountOfFag);
         glas = (TextView) findViewById(R.id.amountOfGlas);
 
+
     }
 
     public void send(View view) {
-        wall.setHeight(Integer.parseInt((String.valueOf(hight.getText()))));
+       wall.setHeight(Integer.parseInt((String.valueOf(hight.getText()))));
         wall.setLength(Integer.parseInt(String.valueOf(hight.getText())));
 
         System.out.println(wall.getPriceOfWall());
         price.setText(String.valueOf(wall.getPriceOfWall()));
         glas.setText("Væggen er " + wall.getAllowedAmountOfGlas() +" glas høj");
-        fag.setText("Væggen er " + wall.getAllowedAmountOfFag()+ "fag bred");
+        fag.setText("Væggen er " + wall.getAllowedAmountOfFag()+ " fag bred");
         height.setText(("Højden af glaset er " + String.valueOf(wall.getHeightOfGlass())));
         width.setText(("Breden af glaset er " + String.valueOf(wall.getLengthOfGlass())));
     }
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL,  "chil0041@edu.easj.dk");
         email.putExtra(Intent.EXTRA_SUBJECT, "subject");
-        email.putExtra(Intent.EXTRA_TEXT, "message");
+        email.putExtra(Intent.EXTRA_TEXT,  "Væggen er " + wall.getAllowedAmountOfFag()+ "fag bred og  Væggen er " + wall.getAllowedAmountOfGlas() +" glas høj"  );
 
         //need this to prompts email client only
         email.setType("message/rfc822");
