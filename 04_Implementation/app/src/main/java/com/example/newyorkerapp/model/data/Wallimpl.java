@@ -2,21 +2,28 @@ package com.example.newyorkerapp.model.data;
 
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.ArrayList;
+
 
 public class Wallimpl implements Wall {
-    int fag , glas;
-    double height, length, heightOfGlass, lengthOfGlass,priceOfWall;
+    int height, length, fag , glas;
+    double  heightOfGlass, lengthOfGlass,priceOfWall;
     FireBaseDAOimpl fireBaseDAOimpl = new FireBaseDAOimpl();
+    ArrayList<Integer> fagliste = new ArrayList<>();
+    ArrayList<Integer> glasliste = new ArrayList<>();
     public Wallimpl() {
         fag = 0;
         glas = 0;
-        heightOfGlass = 60;
-        lengthOfGlass = 45;
+        heightOfGlass = 10;
+        lengthOfGlass = 10;
         height=0;
         length=0;
     }
+
+    public ArrayList<Integer> getFagliste() {
+        return fagliste;
+    }
+
     @Override
     public double getPriceOfWall() {
        calculatePriceOfWall();
@@ -59,29 +66,66 @@ public class Wallimpl implements Wall {
         return glas;
     }
 
+    public ArrayList<Integer> getGlasliste() {
+        return glasliste;
+    }
+
     private void calculateAmountOfFag(){
+      //  fag =  (int) Math.floor(length/ lengthOfGlass);
 
-        fag =  (int) Math.floor(length/ lengthOfGlass);
-
-
-        if (length % lengthOfGlass != 0){
+      /*  if (lengthOfGlass < 150){
+            if (length % lengthOfGlass == 0) {
+                fagliste.add((int) length / (int) lengthOfGlass);
+            }
             lengthOfGlass++;
             calculateAmountOfFag();
-        }
+        }*/
 
-        lengthOfGlass = length / (double)fag;
+       while (lengthOfGlass < 150){
+           if ((length) % lengthOfGlass == 0) {
+               fagliste.add((int) length / (int) lengthOfGlass);
+           }
+           lengthOfGlass++;
+       }
+        for (int i = 0; i <fagliste.size() ; i++) {
+            System.out.println("fagliste" + fagliste.get(i));
+        }
+        fag = fagliste.get(fagliste.size()/2);
+        lengthOfGlass = length/fag;
+        return;
+      //  lengthOfGlass = length / (double)fag;
     }
     private void calculateAmountOfGlas(){
-        glas = (int) (height/ heightOfGlass);
+    //    glas = (int) (height/ heightOfGlass);
+
+     /*   if (heightOfGlass < 150){
+            if (height % heightOfGlass == 0) {
+                glasliste.add((int) height / (int) heightOfGlass);
+            }
+            heightOfGlass++;
+            calculateAmountOfGlas();
+        }*/
+
+        while (heightOfGlass < 150){
+            if (height % heightOfGlass == 0) {
+                glasliste.add((int) height / (int) heightOfGlass);
+            }
+            heightOfGlass++;
+        }
+
+        for (int i = 0; i <glasliste.size() ; i++) {
+            System.out.println("glasliste" + glasliste.get(i));
+        }
+        glas = glasliste.get(glasliste.size()/2);
+        heightOfGlass = height/glas;
 
 
-
-       if (height % heightOfGlass != 0){
+      /* if (height % heightOfGlass != 0){
             heightOfGlass++;
             calculateAmountOfGlas();
         }
-
-       heightOfGlass = height / (double)glas;
+        glas = (int) height / (int) heightOfGlass;*/
+   //   heightOfGlass = height / (double)glas;
     }
 
    private void calculatePriceOfWall(){
