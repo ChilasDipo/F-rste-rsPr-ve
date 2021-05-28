@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.newyorkerapp.R;
 import com.example.newyorkerapp.model.data.Wallimpl;
@@ -26,10 +30,12 @@ import uk.co.jakebreen.sendgridandroid.SendGridResponse;
 import uk.co.jakebreen.sendgridandroid.SendTask;
 
 public class MainActivity extends AppCompatActivity {
-    EditText brede , hight;
+    EditText brede, hight;
     TextView price, width, height, fag, glas;
     Wallimpl wall = new Wallimpl();
     Spinner spinnerfag, glasspinner;
+    SeekBar seekbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,34 +50,14 @@ public class MainActivity extends AppCompatActivity {
         glas = (TextView) findViewById(R.id.amountOfGlas);
         spinnerfag = findViewById(R.id.fagspinner);
         glasspinner = findViewById(R.id.glasspinner);
+        seekbar = findViewById(R.id.seekBar4);
+
+
+
 
     }
 
-    public void send(View view) {
-       wall.setHeight(Integer.parseInt((String.valueOf(hight.getText()))));
-        wall.setLength(Integer.parseInt(String.valueOf(hight.getText())));
-
-        System.out.println(wall.getPriceOfWall());
-        price.setText(String.valueOf( "Prisen på væggen er " + wall.getPriceOfWall() + " kr"));
-        glas.setText("Væggen er " + wall.getAllowedAmountOfGlas() +" glas høj");
-        fag.setText("Væggen er " + wall.getAllowedAmountOfFag()+ " fag bred");
-        height.setText(("Højden af glaset er " + String.valueOf(wall.getHeightOfGlass())));
-        width.setText(("Breden af glaset er " + String.valueOf(wall.getLengthOfGlass())));
-
-        ArrayList<Integer> fagliste = wall.getFagliste();
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, fagliste);
-        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-        spinnerfag.setAdapter(adapter);
-
-/*
-        ArrayList<Integer> glasliste = wall.getGlasliste();
-        ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, glasliste);
-        adapter2.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-        glasspinner.setAdapter(adapter2);*/
-
-    }
-
-    public void mailsend(View view){
+    public void mailsend(View view) {
        /* Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse("mailto:chil0041@edu.easj.dk"));
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Subject Here");
@@ -97,8 +83,37 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        
-
-
     }
+
+    public void send(View view) {
+       // wall.setHeight(Integer.parseInt((String.valueOf(hight.getText()))));
+        wall.setLength(Integer.parseInt(String.valueOf(brede.getText())));
+
+        ArrayList<Integer> fagliste = wall.getFagliste();
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, fagliste);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+        spinnerfag.setAdapter(adapter);
+
+        spinnerfag.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("Position is " + position);
+                System.out.println("id is " + id);
+                wall.setFinalLengthOfGlas(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+          /* ArrayList<Integer> glasliste = wall.getGlasliste();
+        ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, glasliste);
+        adapter2.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+        glasspinner.setAdapter(adapter2);*/
+
+        });
+    }
+
+
 }

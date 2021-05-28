@@ -5,136 +5,71 @@ import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 import java.util.ArrayList;
 
 
-public class Wallimpl implements Wall {
-    int height, length, fag , glas;
-    double  heightOfGlass, lengthOfGlass,priceOfWall;
+public class Wallimpl {
+    int height, length, fag , glas,heightOfGlass, lengthOfGlass, finalLengthOfGlas;
+    double  priceOfWall;
+
+    public int getFinalLengthOfGlas() {
+        return finalLengthOfGlas;
+    }
+
+    public void setFinalLengthOfGlas(int finalLengthOfGlas) {
+        this.finalLengthOfGlas = lenthOfFagList.get(finalLengthOfGlas + 1);;
+    }
+
     FireBaseDAOimpl fireBaseDAOimpl = new FireBaseDAOimpl();
     ArrayList<Integer> fagliste = new ArrayList<>();
     ArrayList<Integer> glasliste = new ArrayList<>();
+    ArrayList<Integer> lenthOfFagList = new ArrayList<>();
+    ArrayList<Integer> heightOfGlassliste = new ArrayList<>();
     public Wallimpl() {
         fag = 0;
         glas = 0;
-        heightOfGlass = 10;
-        lengthOfGlass = 10;
+        heightOfGlass = 20;
+        lengthOfGlass = 20;
         height=0;
         length=0;
     }
-
     public ArrayList<Integer> getFagliste() {
         return fagliste;
     }
-
-    @Override
     public double getPriceOfWall() {
-       calculatePriceOfWall();
+        calculateAmountOfFag();
+        calculateAmountOfGlas();
+        int numberOfGlasInWall = fag * glas;
+        priceOfWall = numberOfGlasInWall*fireBaseDAOimpl.getPriceOfGlass();
        return priceOfWall;
     }
-
-    @Override
     public void setLength(int length) {
         this.length = length;
-       /* if (height!=0 & this.length !=0){
-            calculateAmountOfFag();
-            calculateAmountOfGlas();
-        }*/
+        calculateAmountOfFag();
     }
     //TODO Skal måske sættes sammen en en metode som sætter både height and length(Hvis det gøres skal den først kaldes fra UI når begge værdier er indputtet)
-    @Override
     public void setHeight(int height) {
         this.height = height;
-     /*   if (this.height!=0 & length !=0){
-            calculateAmountOfFag();
-            calculateAmountOfGlas();
-        }*/
+        calculateAmountOfGlas();
     }
-    @Override
-    public double getHeightOfGlass() {
-        return heightOfGlass;
-    }
-    @Override
-    public double getLengthOfGlass() {
-        return lengthOfGlass;
-    }
-
-    @Override
-    public double getAllowedAmountOfFag() {
-        return fag;
-    }
-
-    @Override
-    public double getAllowedAmountOfGlas() {
-        return glas;
-    }
-
     public ArrayList<Integer> getGlasliste() {
         return glasliste;
     }
-
     private void calculateAmountOfFag(){
-      //  fag =  (int) Math.floor(length/ lengthOfGlass);
-
-      /*  if (lengthOfGlass < 150){
-            if (length % lengthOfGlass == 0) {
-                fagliste.add((int) length / (int) lengthOfGlass);
+        for (int i = 15; i < length ; i++) {
+            if (length % i == 0){
+                fagliste.add(length/i);
+                lenthOfFagList.add(i);
             }
-            lengthOfGlass++;
-            calculateAmountOfFag();
-        }*/
-
-       while (lengthOfGlass < 150){
-           if ((length) % lengthOfGlass == 0) {
-               fagliste.add((int) length / (int) lengthOfGlass);
-           }
-           lengthOfGlass++;
-       }
-        for (int i = 0; i <fagliste.size() ; i++) {
-            System.out.println("fagliste" + fagliste.get(i));
         }
-        fag = fagliste.get(fagliste.size()/2);
-        lengthOfGlass = length/fag;
-        return;
-      //  lengthOfGlass = length / (double)fag;
+        System.out.println("Antal fag " + fagliste.toString());
+        System.out.println("Fag længder " + lenthOfFagList.toString());
     }
     private void calculateAmountOfGlas(){
-    //    glas = (int) (height/ heightOfGlass);
-
-     /*   if (heightOfGlass < 150){
-            if (height % heightOfGlass == 0) {
-                glasliste.add((int) height / (int) heightOfGlass);
+        for (int i = 15; i < height ; i++) {
+            if (height % i == 0){
+                glasliste.add(height/i);
+                heightOfGlassliste.add(i);
             }
-            heightOfGlass++;
-            calculateAmountOfGlas();
-        }*/
-
-        while (heightOfGlass < 150){
-            if (height % heightOfGlass == 0) {
-                glasliste.add((int) height / (int) heightOfGlass);
-            }
-            heightOfGlass++;
         }
-
-        for (int i = 0; i <glasliste.size() ; i++) {
-            System.out.println("glasliste" + glasliste.get(i));
-        }
-        glas = glasliste.get(glasliste.size()/2);
-        heightOfGlass = height/glas;
-
-
-      /* if (height % heightOfGlass != 0){
-            heightOfGlass++;
-            calculateAmountOfGlas();
-        }
-        glas = (int) height / (int) heightOfGlass;*/
-   //   heightOfGlass = height / (double)glas;
-    }
-
-   private void calculatePriceOfWall(){
-       calculateAmountOfFag();
-       calculateAmountOfGlas();
-       int numberOfGlasInWall = fag * glas;
-        priceOfWall = numberOfGlasInWall*fireBaseDAOimpl.getPriceOfGlass();
-    }
-    private void buildOutputString(){
-
+        System.out.println("Antal glas " + glasliste.toString());
+        System.out.println("glas længder " + heightOfGlassliste.toString());
     }
 }
