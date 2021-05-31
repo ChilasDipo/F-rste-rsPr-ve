@@ -2,11 +2,7 @@ package com.example.newyorkerapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,13 +10,10 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.newyorkerapp.R;
 import com.example.newyorkerapp.model.data.Wallimpl;
-import com.google.android.material.slider.RangeSlider;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -33,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText brede, hight;
     TextView price, width, height, fag, glas;
     Wallimpl wall = new Wallimpl();
-    Spinner spinnerfag, glasspinner;
+    Spinner fagSpinner, glasspinner;
     SeekBar seekbar;
 
     @Override
@@ -43,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         brede = findViewById(R.id.brede);
         hight = findViewById(R.id.højde);
+        fagSpinner = findViewById(R.id.fagspinner);
+        glasspinner = findViewById(R.id.glasspinner);
+        seekbar = findViewById(R.id.seekBar4);
+
+
         price = (TextView) findViewById(R.id.price);
         width = (TextView) findViewById(R.id.widthOfGlas);
         height = (TextView) findViewById(R.id.heightOfGlas);
         fag = (TextView) findViewById(R.id.amountOfFag);
         glas = (TextView) findViewById(R.id.amountOfGlas);
-        spinnerfag = findViewById(R.id.fagspinner);
-        glasspinner = findViewById(R.id.glasspinner);
-        seekbar = findViewById(R.id.seekBar4);
-
-
 
 
     }
@@ -86,15 +79,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void send(View view) {
-       // wall.setHeight(Integer.parseInt((String.valueOf(hight.getText()))));
+        wall.setHeight(Integer.parseInt((String.valueOf(hight.getText()))));
         wall.setLength(Integer.parseInt(String.valueOf(brede.getText())));
 
         ArrayList<Integer> fagliste = wall.getFagliste();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, fagliste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-        spinnerfag.setAdapter(adapter);
-
-        spinnerfag.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        fagSpinner.setAdapter(adapter);
+        fagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 System.out.println("Position is " + position);
@@ -106,14 +98,27 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-
-          /* ArrayList<Integer> glasliste = wall.getGlasliste();
-        ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, glasliste);
-        adapter2.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-        glasspinner.setAdapter(adapter2);*/
-
         });
-    }
+            ArrayList<Integer> glasListe = wall.getGlasliste();
+            ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glasListe);
+            adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            glasspinner.setAdapter(adapter2);
+            glasspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    System.out.println("Position is " + position);
+                    System.out.println("id is " + id);
+                    wall.setFinalHeightOfGlas(position);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
 
 
 }
+    }

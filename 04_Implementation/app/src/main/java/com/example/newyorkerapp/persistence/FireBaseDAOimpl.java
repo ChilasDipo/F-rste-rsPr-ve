@@ -9,16 +9,40 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class FireBaseDAOimpl{
-   double price = 5;
+   double priceOfGlass = 985;
+   double feeForBigGlass = 485;
 
-   public double getPriceOfGlass(){
-      connect();
-      System.out.println("PRice is " + price);
-      return 985;
+   public double getPriceOfGlass(Boolean glassIsBig){
+      //connect();
+      System.out.println("Price is " + priceOfGlass);
+      if (glassIsBig){
+      return priceOfGlass+feeForBigGlass;
+      }
+      return priceOfGlass;
    }
 
+   void getListOfExtraFeturesFromDB(){
+      DatabaseReference ref = connect();
 
-   void connect(){
+
+      ref.addListenerForSingleValueEvent(new ValueEventListener() {
+         @Override
+         public void onDataChange(@NonNull DataSnapshot snapshot) {
+            
+         }
+
+         @Override
+         public void onCancelled(@NonNull DatabaseError error) {
+
+         }
+      });
+
+
+
+
+   }
+
+   DatabaseReference connect(){
 
       FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");
       DatabaseReference ref = database.getReference("/extra/glas");
@@ -41,7 +65,7 @@ public class FireBaseDAOimpl{
 
 
 
-
+      return ref;
    }
 
 
