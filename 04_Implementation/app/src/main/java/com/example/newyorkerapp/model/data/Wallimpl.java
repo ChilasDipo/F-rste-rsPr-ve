@@ -1,7 +1,7 @@
 package com.example.newyorkerapp.model.data;
-
+import com.example.newyorkerapp.model.exceptions.AmountOfGlassOrFagUnableToBeCalculated;
+import com.example.newyorkerapp.model.exceptions.InputMangler;
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
-
 import java.util.ArrayList;
 
 
@@ -30,39 +30,47 @@ public class Wallimpl {
         this.finalHeightOfGlas = heightOfGlassliste.get(finalHeightOfGlas);
         glas = glasliste.get(finalHeightOfGlas);
     }
-
-    FireBaseDAOimpl fireBaseDAOimpl = new FireBaseDAOimpl();
+    FireBaseDAOimpl fireBaseDAOimpl;
     ArrayList<Integer> fagliste = new ArrayList<>();
     ArrayList<Integer> glasliste = new ArrayList<>();
     ArrayList<Integer> lenthOfFagList = new ArrayList<>();
     ArrayList<Integer> heightOfGlassliste = new ArrayList<>();
 
+    public ArrayList<String> getListfromDB(){
+        ArrayList<String> listOfFetures = new ArrayList<>();
+           listOfFetures = fireBaseDAOimpl.getListOfExtraFeturesFromDB();
+        return listOfFetures;
+    }
     public Wallimpl() {
-        fag = 0;
-        glas = 0;
         heightOfGlass = 20;
         lengthOfGlass = 20;
         height = 0;
         length = 0;
+        fireBaseDAOimpl = new FireBaseDAOimpl();
     }
 
     public ArrayList<Integer> getFagliste() {
         return fagliste;
     }
 
-    public double getPriceOfWall() {
-            double pricePerGlass = fireBaseDAOimpl.getPriceOfGlass(wallBigEnouthForExtraFee);
+    public double getPriceOfWall() throws AmountOfGlassOrFagUnableToBeCalculated {
+        if (fag == 0 || glas ==0){
+            throw new AmountOfGlassOrFagUnableToBeCalculated(){};
+        }
+        double pricePerGlass = fireBaseDAOimpl.getPriceOfGlass();
         priceOfWall = (fag * glas) * pricePerGlass;
         return priceOfWall;
     }
 
-    public void setLength(int length) {
+    public void setLength(int length) throws InputMangler {
+        if (length == 0) throw new InputMangler(){};
         this.length = length;
         calculateAmountOfFag();
     }
 
     //TODO Skal måske sættes sammen en en metode som sætter både height and length(Hvis det gøres skal den først kaldes fra UI når begge værdier er indputtet)
-    public void setHeight(int height) {
+    public void setHeight(int height) throws InputMangler {
+        if (height == 0) throw new InputMangler(){};
         this.height = height;
         calculateAmountOfGlas();
     }

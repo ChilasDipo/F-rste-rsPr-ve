@@ -7,28 +7,51 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class FireBaseDAOimpl{
    double priceOfGlass = 985;
    double feeForBigGlass = 485;
+   HashMap<String, Integer> nameAndPricesForItems = new HashMap<>();
+   ArrayList<String> fetureList;
+   ArrayList<Integer> priceListForFetures;
+   public FireBaseDAOimpl() {
+      buildHashMapForFetureNameAndPrice();
+     // connect();
+   }
 
-   public double getPriceOfGlass(Boolean glassIsBig){
-      //connect();
+   public double getPriceOfGlass(){
       System.out.println("Price is " + priceOfGlass);
-      if (glassIsBig){
-      return priceOfGlass+feeForBigGlass;
-      }
       return priceOfGlass;
    }
 
-   void getListOfExtraFeturesFromDB(){
-      DatabaseReference ref = connect();
+   public ArrayList<String> getListOfExtraFeturesFromDB()  {
+      fetureList  = new ArrayList<>(nameAndPricesForItems.keySet());
+      System.out.println("Feturelist" + fetureList.toString());
+     return fetureList;
+   }
+   public ArrayList<Integer> getPriceOfExtraFeturesFromDB() {
+      priceListForFetures  = new ArrayList<>(nameAndPricesForItems.values());
+      System.out.println("Feturelist" + fetureList.toString());
+      return priceListForFetures;
+   }
 
+   void buildHashMapForFetureNameAndPrice(){
+      FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");
+      DatabaseReference ref = database.getReference("/pris");
 
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot snapshot) {
-            
+            for ( DataSnapshot datasnapshot:snapshot.getChildren())
+            {
+               String key = datasnapshot.getKey();
+               Integer value=datasnapshot.getValue(Integer.class);
+               System.out.println("Imworking");
+               nameAndPricesForItems.put(key,value);
+            }
          }
 
          @Override
@@ -36,9 +59,6 @@ public class FireBaseDAOimpl{
 
          }
       });
-
-
-
 
    }
 
@@ -52,7 +72,6 @@ public class FireBaseDAOimpl{
          public void onDataChange(@NonNull DataSnapshot snapshot) {
              Double post = snapshot.child("price").getValue(Double.class);
             System.out.println("price from database " + post);
-            System.out.println("Price from database plus 5 " + (post + 5.0));
             priceOfGlass = post;
             System.out.println(priceOfGlass);
          }

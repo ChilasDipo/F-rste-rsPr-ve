@@ -8,6 +8,18 @@
     tools:context=".view.MainActivity">
 
     <Spinner
+        android:id="@+id/glasspinner2"
+        android:layout_width="211dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fagspinner"
+        app:layout_constraintVertical_bias="0.168" />
+
+    <Spinner
         android:id="@+id/glasspinner"
         android:layout_width="211dp"
         android:layout_height="20dp"
