@@ -53,8 +53,8 @@ public class FireBaseDAOimpl{
              Double post = snapshot.child("price").getValue(Double.class);
             System.out.println("price from database " + post);
             System.out.println("Price from database plus 5 " + (post + 5.0));
-            price = post;
-            System.out.println(price);
+            priceOfGlass = post;
+            System.out.println(priceOfGlass);
          }
 
          @Override

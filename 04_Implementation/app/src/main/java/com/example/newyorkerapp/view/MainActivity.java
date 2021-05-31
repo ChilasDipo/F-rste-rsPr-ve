@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         hight = findViewById(R.id.højde);
         fagSpinner = findViewById(R.id.fagspinner);
         glasspinner = findViewById(R.id.glasspinner);
-        seekbar = findViewById(R.id.seekBar4);
 
 
         price = (TextView) findViewById(R.id.price);
