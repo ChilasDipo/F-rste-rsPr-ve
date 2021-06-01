@@ -11,7 +11,6 @@ public class Wallimpl {
 
     private Boolean wallBigEnouthForExtraFee, wetRoom, hasDoor;
 
-    FireBaseDAOimpl fireBaseDAOimpl;
     ArrayList<Integer> fagliste = new ArrayList<>();
     ArrayList<Integer> glasliste = new ArrayList<>();
     ArrayList<Integer> lenthOfFagList = new ArrayList<>();
@@ -22,7 +21,6 @@ public class Wallimpl {
         lengthOfGlass = 20;
         height = 0;
         length = 0;
-        fireBaseDAOimpl = new FireBaseDAOimpl();
     }
     public void setLength(int length) throws InputMangler {
         if (length == 0) throw new InputMangler(){};
@@ -46,8 +44,6 @@ public class Wallimpl {
     public void setFinalLengthOfGlas(int finalLengthOfGlas) {
         this.finalLengthOfGlas = lenthOfFagList.get(finalLengthOfGlas);
         fag = fagliste.get(finalLengthOfGlas);
-        System.out.println("LenthOfGlas" + lenthOfFagList.get(finalLengthOfGlas));
-        System.out.println("Amount of fag is " + fagliste.get(finalLengthOfGlas));
     }
     void calculateWallBigEnouthForExtraFee(){
     }
@@ -59,24 +55,12 @@ public class Wallimpl {
         return finalLengthOfGlas;
     }
 
-
-    public ArrayList<String> getListfromDB(){
-        ArrayList<String> listOfFetures = new ArrayList<>();
-           listOfFetures = fireBaseDAOimpl.getListOfExtraFeturesFromDB();
-        return listOfFetures;
-    }
-
-
     public ArrayList<Integer> getFagliste() {
         return fagliste;
     }
 
-    public double getPriceOfWall() throws AmountOfGlassOrFagUnableToBeCalculated {
-        if (fag == 0 || glas ==0){
-            throw new AmountOfGlassOrFagUnableToBeCalculated(){};
-        }
-        double pricePerGlass = fireBaseDAOimpl.getPriceOfGlass();
-        priceOfWall = (fag * glas) * pricePerGlass;
+    public double getPriceOfWall() {
+        priceOfWall = (fag * glas) * 985;
         return priceOfWall;
     }
 
@@ -86,6 +70,8 @@ public class Wallimpl {
     }
 
     private void calculateAmountOfFag() {
+        fagliste.clear();
+        lenthOfFagList.clear();
         for (int i = 15; i < length; i++) {
             if (length % i == 0) {
                 fagliste.add(length / i);
@@ -97,6 +83,8 @@ public class Wallimpl {
     }
 
     private void calculateAmountOfGlas() {
+        glasliste.clear();
+        heightOfGlassliste.clear();
         for (int i = 15; i < height; i++) {
             if (height % i == 0) {
                 glasliste.add(height / i);

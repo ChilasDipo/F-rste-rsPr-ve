@@ -1,5 +1,9 @@
 package com.example.newyorkerapp.viewModel;
 
+import android.widget.ArrayAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,18 +12,42 @@ import com.example.newyorkerapp.model.data.Wall;
 import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.model.exceptions.AmountOfGlassOrFagUnableToBeCalculated;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
+import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivityViewModel extends ViewModel {
 
     private MutableLiveData<Double> price;
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
-
+    FireBaseDAOimpl fireBaseDAOimpl;
+    ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
-        wall = new Wallimpl();
+        fireBaseDAOimpl = new FireBaseDAOimpl();
+        addWall();
+        selectWall();
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
+    public LiveData<Wallimpl> getWall() {
+        if (wallObject == null) {
+            wallObject = new MutableLiveData<>();
+        }
+        return wallObject;
+    }
+
+    void selectWall(){
+        wall = listOfWalls.get(0);
+    }
+        // disse 2 funktioner kan ændres så man kan vælge et væg obejct
+    void addWall(){
+        listOfWalls.add(new Wallimpl());
+    }
 
 
     public void setheight(int height) {
@@ -29,6 +57,11 @@ public class MainActivityViewModel extends ViewModel {
             inputMangler.printStackTrace();
         }
         wallObject.setValue(wall);
+
+    }
+
+   public ArrayList<String> getListOfExstaFromDB(){
+        return fireBaseDAOimpl.getListOfExtraFeturesFromDB();
     }
 
     public void setlenght(int lenght) {
@@ -47,14 +80,26 @@ public class MainActivityViewModel extends ViewModel {
         wall.setFinalLengthOfGlas(position);
         wallObject.setValue(wall);
     }
-    public LiveData<Wallimpl> getWall() {
-        if (wallObject == null) {
-            wallObject = new MutableLiveData<>();
-        }
-        return wallObject;
+
+    public ArrayList<Integer> getAdapterForFag(){
+        return wall.getFagliste();
+    }
+    public ArrayList<Integer> getAdapterForGlas(){
+        return wall.getGlasliste();
     }
 
-    public double getPrice() {
+    public String getInfoAboutWall(){
+        StringBuilder string = new StringBuilder();
+        string.append("Glases højde er  ");
+        string.append(wall.getFinalHeightOfGlas()).append("\n");
+        string.append("glasses brede er ");
+        string.append(wall.getFinalLengthOfGlas()).append("\n");
+        string.append("Væggens pris er ");
+        string.append(wall.getPriceOfWall());
+        return string.toString();
+    }
+
+   /* public double getPrice() {
         double price = 0;
         try {
              price = wall.getPriceOfWall();
@@ -62,7 +107,7 @@ public class MainActivityViewModel extends ViewModel {
             amountOfGlassOrFagUnableToBeCalculated.printStackTrace();
         }
         return price;
-    }
+    }*/
 
 
 }

@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.newyorkerapp.R;
-import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.viewModel.MainActivityViewModel;
 
 import java.util.ArrayList;
@@ -52,22 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
         mMainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
-      /*  mMainActivityViewModel.getWall().observe(this, new Observer<Wallimpl>() {
-            @Override
-            public void onChanged(Wallimpl wallimpl) {
-                System.out.println("Something has changed");
-
-                try {
-                    price.setText((int) mMainActivityViewModel.getWall().getValue().getPriceOfWall());
-                } catch (AmountOfGlassOrFagUnableToBeCalculated amountOfGlassOrFagUnableToBeCalculated) {
-                    amountOfGlassOrFagUnableToBeCalculated.printStackTrace();
-                }
-            }
-        });*/
-
-    }
+        mMainActivityViewModel.getWall().observe(this, wallimpls -> {
+            fag.setText(mMainActivityViewModel.getInfoAboutWall());
+        });
 
 
+
+}
 
     public void send(View view) {
         mMainActivityViewModel.setheight(Integer.parseInt((String.valueOf(hight.getText()))));
@@ -75,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        ArrayList<Integer> fagliste = mMainActivityViewModel.getWall().getValue().getFagliste();
+        ArrayList<Integer> fagliste = mMainActivityViewModel.getAdapterForFag();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, fagliste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
         fagSpinner.setAdapter(adapter);
@@ -90,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-            ArrayList<Integer> glasListe = mMainActivityViewModel.getWall().getValue().getGlasliste();
+            ArrayList<Integer> glasListe = mMainActivityViewModel.getAdapterForGlas();
             ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glasListe);
             adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             glasspinner.setAdapter(adapter2);
@@ -108,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
 
             //Skal flyttes
-        /*
-        ArrayList<String> databasefetures = wall.getListfromDB();
+
+        ArrayList<String> databasefetures = mMainActivityViewModel.getListOfExstaFromDB();
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, databasefetures);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         glasspinner2.setAdapter(adapter3);
@@ -123,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });*/
+        });
+
 
 
 }
