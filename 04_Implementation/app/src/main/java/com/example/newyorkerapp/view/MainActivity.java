@@ -1,9 +1,9 @@
 package com.example.newyorkerapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
+
 
 import android.os.Bundle;
 import android.view.View;
@@ -26,12 +26,11 @@ import uk.co.jakebreen.sendgridandroid.SendGridResponse;
 import uk.co.jakebreen.sendgridandroid.SendTask;
 
 public class MainActivity extends AppCompatActivity {
-    EditText brede, hight;
-    TextView price, width, height, fag, glas;
-    Wallimpl wall = new Wallimpl();
-    Spinner fagSpinner, glasspinner,glasspinner2;
+    private EditText brede, hight;
+    private TextView price, width, height, fag, glas;
+    private Spinner fagSpinner, glasspinner,glasspinner2;
 
-    private MainActivityViewModel mMainActivityViewModel;
+     MainActivityViewModel mMainActivityViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +52,18 @@ public class MainActivity extends AppCompatActivity {
 
         mMainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
-        mMainActivityViewModel.getWall().observe(this, new Observer<Wallimpl>() {
+      /*  mMainActivityViewModel.getWall().observe(this, new Observer<Wallimpl>() {
             @Override
             public void onChanged(Wallimpl wallimpl) {
                 System.out.println("Something has changed");
 
-                price.setText((int) mMainActivityViewModel.getPrice());
+                try {
+                    price.setText((int) mMainActivityViewModel.getWall().getValue().getPriceOfWall());
+                } catch (AmountOfGlassOrFagUnableToBeCalculated amountOfGlassOrFagUnableToBeCalculated) {
+                    amountOfGlassOrFagUnableToBeCalculated.printStackTrace();
+                }
             }
-        });
+        });*/
 
     }
 
@@ -68,19 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void send(View view) {
         mMainActivityViewModel.setheight(Integer.parseInt((String.valueOf(hight.getText()))));
-      //  wall.setLength(Integer.parseInt(String.valueOf(brede.getText())));
         mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(brede.getText()))));
 
 
 
-        ArrayList<Integer> fagliste = wall.getFagliste();
+        ArrayList<Integer> fagliste = mMainActivityViewModel.getWall().getValue().getFagliste();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, fagliste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
         fagSpinner.setAdapter(adapter);
         fagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                wall.setFinalLengthOfGlas(position);
+                mMainActivityViewModel.widthPicedFromDropDown(position);
             }
 
             @Override
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             glasspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    wall.setFinalHeightOfGlas(position);
+                   mMainActivityViewModel.heightPicedFromDropDown(position);
                 }
 
                 @Override

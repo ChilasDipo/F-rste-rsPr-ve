@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 
 public class FireBaseDAOimpl{
-   double priceOfGlass = 985;
-   double feeForBigGlass = 485;
-   HashMap<String, Integer> nameAndPricesForItems = new HashMap<>();
-   ArrayList<String> fetureList;
-   ArrayList<Integer> priceListForFetures;
+   private double priceOfGlass = 985;
+   private double feeForBigGlass = 485;
+   private  HashMap<String, Integer> nameAndPricesForItems = new HashMap<>();
+   private ArrayList<String> fetureList;
+   private  ArrayList<Integer> priceListForFetures;
    public FireBaseDAOimpl() {
       buildHashMapForFetureNameAndPrice();
      // connect();
@@ -65,7 +65,7 @@ public class FireBaseDAOimpl{
    DatabaseReference connect(){
 
       FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");
-      DatabaseReference ref = database.getReference("/extra/glas");
+      DatabaseReference ref = database.getReference("/pris/glas");
 
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override

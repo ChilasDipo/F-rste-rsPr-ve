@@ -13,7 +13,7 @@ public class MainActivityViewModel extends ViewModel {
 
     private MutableLiveData<Double> price;
     private MutableLiveData<Wallimpl> wallObject;
-    Wallimpl wall;
+    private Wallimpl wall;
 
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
@@ -28,7 +28,7 @@ public class MainActivityViewModel extends ViewModel {
         } catch (InputMangler inputMangler) {
             inputMangler.printStackTrace();
         }
-        wallObject.postValue(wall);
+        wallObject.setValue(wall);
     }
 
     public void setlenght(int lenght) {
@@ -37,10 +37,20 @@ public class MainActivityViewModel extends ViewModel {
         } catch (InputMangler inputMangler) {
             inputMangler.printStackTrace();
         }
-        wallObject.postValue(wall);
+        wallObject.setValue(wall);
     }
-
+    public void heightPicedFromDropDown(int position){
+        wall.setFinalHeightOfGlas(position);
+        wallObject.setValue(wall);
+    }
+    public void widthPicedFromDropDown(int position){
+        wall.setFinalLengthOfGlas(position);
+        wallObject.setValue(wall);
+    }
     public LiveData<Wallimpl> getWall() {
+        if (wallObject == null) {
+            wallObject = new MutableLiveData<>();
+        }
         return wallObject;
     }
 
