@@ -19,6 +19,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/newyorker_logo_ok_gammel"
-        android:contentDescription="TODO"
-        android:onClick="startApp"/>
+        android:contentDescription="TODO" />
 </androidx.constraintlayout.widget.ConstraintLayout>

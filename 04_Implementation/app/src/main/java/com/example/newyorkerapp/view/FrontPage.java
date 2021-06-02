@@ -16,7 +16,6 @@ public class FrontPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-
         setContentView(R.layout.activity_front_page);
 
         //TODO read up on this thing
@@ -28,12 +27,4 @@ public class FrontPage extends AppCompatActivity {
             }
         }, 3000);
     }
-
-    public void startApp(View view){
-            Intent myIntent = new Intent(this, MainActivity.class);
-            startActivity(myIntent);
-    }
-
-
-
 }

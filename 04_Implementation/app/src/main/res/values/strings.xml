@@ -19,9 +19,6 @@
     <string name="button_Main_sendnow_text">Send now</string>
     <string name="checkBox_Main_glass_text">Special Glas</string>
     <string name="checkBox_Main_door_text">Dør</string>
-    <string name="editText_Main_height_hint">Højde</string>
     <string name="editText_Main_width_hint">Bredde</string>
-    <string name="button_Main_send_text">Beregn</string>
-    <string name="button_Main_sendnow_text">Send now</string>
     <string name="checkBox_Main_wetroom_text">Vådrum</string>
 </resources>

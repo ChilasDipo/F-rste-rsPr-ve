@@ -51,14 +51,14 @@ public class MainActivityViewModel extends ViewModel {
     public ArrayList<String> getListOfDoors(){
         ArrayList<String> nameListForDoors  = new ArrayList<String>(fireBaseDAOimpl.getListOfDoors().keySet());
         ArrayList<Integer> priceListForDoors  = new ArrayList<Integer>(fireBaseDAOimpl.getListOfDoors().values());
-        //Price.setPriceListForDoors();
+        //price.setPriceListForDoors();
         return nameListForDoors;
 
     }
     public ArrayList<String> getListOfGlas(){
         ArrayList<String> nameListForGlas  = new ArrayList<String>(fireBaseDAOimpl.getListOfGlas().keySet());
         ArrayList<Integer> priceListForglas = new ArrayList<Integer>(fireBaseDAOimpl.getListOfGlas().values());
-        //Price.setPriceListForDoors();
+        //Price.setPriceLsitForglas();
         return nameListForGlas;
     }
 
