@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        brede = findViewById(R.id.brede);
-        hight = findViewById(R.id.højde);
+        brede = findViewById(R.id.width);
+        hight = findViewById(R.id.height);
         fagSpinner = findViewById(R.id.fagspinner);
         glasspinner = findViewById(R.id.glasspinner);
         doorSelection = findViewById(R.id.doorSelection);

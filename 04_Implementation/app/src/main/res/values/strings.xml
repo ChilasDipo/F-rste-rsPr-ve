@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">NewYorkerApp</string>
+    <string name="kontakt_name"></string>
+    <string name="editText_Kontakt_email_hint">E-mail</string>
+    <string name="editText_Kontakt_phonenumber_hint">Telefonnummer</string>
+    <string name="editText_kontakt_adresse_hint">Adresse</string>
+    <string name="editText_Kontakt_send_hint">Send</string>
+    <string name="button_Kontakt_kontakt_text">kontakt os</string>
+    <string name="button_Kontakt_katalog_text">Katalog</string>
+    <string name="button_Kontakt_measure_text">mål Selv</string>
+    <string name="editText_Kontakt_name_hint">Navn</string>
+    <string name="editText_Kontakt_besked_hint">Besked</string>
+    <string name="button_Catalog_contact_text">kontakt os</string>
+    <string name="button_Catalog_catalog_text">Katalog</string>
+    <string name="button_Catalog_measure_text">mål Selv</string>
+    <string name="editText_Main_height_hint">Højde</string>
+    <string name="editText_Main_bredde_hint">Brede</string>
+    <string name="button_Main_send_text">Beregn</string>
+    <string name="button_Main_sendnow_text">Send now</string>
+    <string name="checkBox_Main_glass_text">Special Glas</string>
+    <string name="checkBox_Main_door_text">Dør</string>
+    <string name="editText_Main_height_hint">Højde</string>
+    <string name="editText_Main_width_hint">Bredde</string>
+    <string name="button_Main_send_text">Beregn</string>
+    <string name="button_Main_sendnow_text">Send now</string>
+    <string name="checkBox_Main_wetroom_text">Vådrum</string>
 </resources>

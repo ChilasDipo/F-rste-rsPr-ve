@@ -32,7 +32,7 @@
         android:layout_marginTop="11dp"
         android:layout_marginEnd="289dp"
         android:layout_marginRight="289dp"
-        android:text="Special Glas"
+        android:text="@string/checkBox_Main_glass_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="13dp"
-        android:text="Dør"
+        android:text="@string/checkBox_Main_door_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wetroom" />
 
@@ -76,26 +76,26 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/højde"
+        android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Højde"
+        android:hint="@string/editText_Main_height_hint"
         android:inputType="number"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brede" />
+        app:layout_constraintTop_toBottomOf="@+id/width" />
 
     <EditText
-        android:id="@+id/brede"
+        android:id="@+id/width"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Brede"
+        android:hint="@string/editText_Main_width_hint"
         android:inputType="number"
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="send"
-        android:text="Beregn"
+        android:text="@string/button_Main_send_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/højde"
+        app:layout_constraintTop_toBottomOf="@+id/height"
         app:layout_constraintVertical_bias="0.497" />
 
     <LinearLayout
@@ -178,7 +178,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send now"
+        android:text="@string/button_Main_sendnow_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -196,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/højde"
+        app:layout_constraintTop_toBottomOf="@+id/height"
         app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
@@ -208,7 +208,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="289dp"
         android:layout_marginRight="289dp"
-        android:text="Vådrum"
+        android:text="@string/checkBox_Main_wetroom_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
