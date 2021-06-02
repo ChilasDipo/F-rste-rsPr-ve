@@ -9,7 +9,7 @@ public class Wallimpl {
    private int height, length, fag, glas, heightOfGlass, lengthOfGlass, finalLengthOfGlas, finalHeightOfGlas;
     private double priceOfWall;
 
-    private Boolean wallBigEnouthForExtraFee, wetRoom, hasDoor;
+    private Boolean wallBigEnouthForExtraFee, wetRoom, hasDoor, hasSpecialGlas;
 
     ArrayList<Integer> fagliste = new ArrayList<>();
     ArrayList<Integer> glasliste = new ArrayList<>();
@@ -35,6 +35,30 @@ public class Wallimpl {
         calculateAmountOfGlas();
     }
 
+    public Boolean getWetRoom() {
+        return wetRoom;
+    }
+
+    public void setWetRoom(Boolean wetRoom) {
+        this.wetRoom = wetRoom;
+    }
+
+    public Boolean getHasDoor() {
+        return hasDoor;
+    }
+
+    public void setHasDoor(Boolean hasDoor) {
+        this.hasDoor = hasDoor;
+    }
+
+    public Boolean getHasSpecialGlas() {
+        return hasSpecialGlas;
+    }
+
+    public void setHasSpecialGlas(Boolean hasSpecialGlas) {
+        this.hasSpecialGlas = hasSpecialGlas;
+    }
+
     public void setFinalHeightOfGlas(int finalHeightOfGlas) {
         this.finalHeightOfGlas = heightOfGlassliste.get(finalHeightOfGlas);
         glas = glasliste.get(finalHeightOfGlas);
@@ -46,6 +70,10 @@ public class Wallimpl {
         fag = fagliste.get(finalLengthOfGlas);
     }
     void calculateWallBigEnouthForExtraFee(){
+        if (finalLengthOfGlas*finalHeightOfGlas == 5000){
+            wallBigEnouthForExtraFee=true;
+        }
+        else wallBigEnouthForExtraFee=false;
     }
     public int getFinalHeightOfGlas() {
         return finalHeightOfGlas;
@@ -60,6 +88,11 @@ public class Wallimpl {
     }
 
     public double getPriceOfWall() {
+        calculateWallBigEnouthForExtraFee();
+        if (wallBigEnouthForExtraFee){
+            priceOfWall = (fag * glas) * 1470;
+            return priceOfWall;
+        }
         priceOfWall = (fag * glas) * 985;
         return priceOfWall;
     }

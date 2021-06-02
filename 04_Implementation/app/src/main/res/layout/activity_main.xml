@@ -8,16 +8,60 @@
     tools:context=".view.MainActivity">
 
     <Spinner
-        android:id="@+id/glasspinner2"
+        android:id="@+id/doorSelection"
+        android:layout_width="211dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/glasSelection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.653"
+        app:layout_constraintStart_toEndOf="@+id/door"
+        app:layout_constraintTop_toBottomOf="@+id/glasspinner"
+        app:layout_constraintVertical_bias="1.0"
+        android:visibility="invisible"/>
+
+    <CheckBox
+        android:id="@+id/glass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="289dp"
+        android:layout_marginRight="289dp"
+        android:text="Special Glas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/door"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/door"
+        android:layout_width="86dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="13dp"
+        android:text="Dør"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wetroom" />
+
+    <Spinner
+        android:id="@+id/glasSelection"
         android:layout_width="211dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fagspinner"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintHorizontal_bias="0.871"
+        app:layout_constraintStart_toEndOf="@+id/glass"
+        app:layout_constraintTop_toBottomOf="@+id/glasspinner"
+        app:layout_constraintVertical_bias="0.382"
+        android:visibility="invisible"/>
 
     <Spinner
         android:id="@+id/glasspinner"
@@ -35,13 +79,13 @@
         android:id="@+id/højde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Højde"
         android:inputType="number"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brede" />
 
@@ -49,16 +93,17 @@
         android:id="@+id/brede"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Brede"
         android:inputType="number"
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/send"
@@ -86,21 +131,20 @@
         app:layout_constraintVertical_bias="0.497" />
 
     <LinearLayout
-        android:layout_width="365dp"
-        android:layout_height="243dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="356dp"
+        android:layout_height="168dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="36dp"
         android:background="#CDCDCD"
         android:orientation="vertical"
         android:padding="2dp"
         android:paddingLeft="2dp"
         android:paddingTop="2dp"
         android:paddingRight="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/brede"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -147,11 +191,27 @@
         android:id="@+id/fagspinner"
         android:layout_width="211dp"
         android:layout_height="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/højde"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/wetroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="289dp"
+        android:layout_marginRight="289dp"
+        android:text="Vådrum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glasspinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

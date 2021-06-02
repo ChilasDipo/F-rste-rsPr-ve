@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,18 +19,12 @@ import com.example.newyorkerapp.R;
 import com.example.newyorkerapp.viewModel.MainActivityViewModel;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-
-import uk.co.jakebreen.sendgridandroid.SendGrid;
-import uk.co.jakebreen.sendgridandroid.SendGridMail;
-import uk.co.jakebreen.sendgridandroid.SendGridResponse;
-import uk.co.jakebreen.sendgridandroid.SendTask;
 
 public class MainActivity extends AppCompatActivity {
     private EditText brede, hight;
     private TextView price, width, height, fag, glas;
-    private Spinner fagSpinner, glasspinner,glasspinner2;
-
+    private Spinner fagSpinner, glasspinner,glasspinner2, doorSelection,glasSelection;
+    private CheckBox glassCheckBox, wetroomCheckBox, doorCheckBox;
      MainActivityViewModel mMainActivityViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +35,70 @@ public class MainActivity extends AppCompatActivity {
         hight = findViewById(R.id.højde);
         fagSpinner = findViewById(R.id.fagspinner);
         glasspinner = findViewById(R.id.glasspinner);
-        glasspinner2 = findViewById(R.id.glasspinner2);
+        doorSelection = findViewById(R.id.doorSelection);
+        glasSelection = findViewById(R.id.glasSelection);
+
+
+        glassCheckBox = findViewById(R.id.glass);
+        wetroomCheckBox = findViewById(R.id.wetroom);
+        doorCheckBox = findViewById(R.id.door);
+
+       doorCheckBox.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if (doorCheckBox.isChecked()){
+                   doorSelection.setVisibility(View.VISIBLE);
+
+                   ArrayList<String> doorlist = mMainActivityViewModel.getListOfDoors();
+                   ArrayAdapter<String> adapterForDoors = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, doorlist);
+                   adapterForDoors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+                   doorSelection.setAdapter(adapterForDoors);
+                   doorSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                       @Override
+                       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                       }
+
+                       @Override
+                       public void onNothingSelected(AdapterView<?> parent) {
+
+                       }
+                   });
+
+               }else{
+                   doorSelection.setVisibility(View.INVISIBLE);
+               }
+           }
+       });
+
+        glassCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (glassCheckBox.isChecked()){
+                    glasSelection.setVisibility(View.VISIBLE);
+
+                    ArrayList<String> glaslist = mMainActivityViewModel.getListOfGlas();
+                    ArrayAdapter<String> adapterForGlas = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glaslist);
+                    adapterForGlas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+                    glasSelection.setAdapter(adapterForGlas);
+                    glasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+                }else{
+                    glasSelection.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
 
 
         price = (TextView) findViewById(R.id.price);
@@ -99,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Skal flyttes
 
-        ArrayList<String> databasefetures = mMainActivityViewModel.getListOfExstaFromDB();
+       /* ArrayList<String> databasefetures = mMainActivityViewModel.getListOfExstaFromDB();
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, databasefetures);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         glasspinner2.setAdapter(adapter3);
@@ -113,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
 
 
@@ -126,6 +185,8 @@ public void mailsend(View view) {
         startActivity(Intent.createChooser(emailIntent, "Send feedback"));*/
 
 
+
+    /* sending gennem API
         SendGrid sendGrid = SendGrid.create("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");
         SendGridMail mail = new SendGridMail();
         mail.addRecipient("chil0041@edu.easj.dk", "Chilas");
@@ -141,7 +202,10 @@ public void mailsend(View view) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
+
+    Intent myIntent = new Intent(this, FrontPage.class);
+    startActivity(myIntent);
 
 
     }
