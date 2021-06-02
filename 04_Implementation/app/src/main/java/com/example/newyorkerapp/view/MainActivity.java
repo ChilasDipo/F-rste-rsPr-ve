@@ -21,9 +21,9 @@ import com.example.newyorkerapp.viewModel.MainActivityViewModel;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText brede, hight;
-    private TextView price, width, height, fag, glas;
-    private Spinner fagSpinner, glasspinner,glasspinner2, doorSelection,glasSelection;
+    private EditText width, height;
+    private TextView  fag;
+    private Spinner amountOfFagSelection, amountOfGlasSelection, doorSelection,glasSelection;
     private CheckBox glassCheckBox, wetroomCheckBox, doorCheckBox;
      MainActivityViewModel mMainActivityViewModel;
     @Override
@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        brede = findViewById(R.id.width);
-        hight = findViewById(R.id.height);
-        fagSpinner = findViewById(R.id.fagspinner);
-        glasspinner = findViewById(R.id.glasspinner);
+        width = findViewById(R.id.width);
+        height = findViewById(R.id.height);
+
+        amountOfFagSelection = findViewById(R.id.fagspinner);
+        amountOfGlasSelection = findViewById(R.id.glasspinner);
         doorSelection = findViewById(R.id.doorSelection);
         glasSelection = findViewById(R.id.glasSelection);
-
 
         glassCheckBox = findViewById(R.id.glass);
         wetroomCheckBox = findViewById(R.id.wetroom);
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 if (glassCheckBox.isChecked()){
                     glasSelection.setVisibility(View.VISIBLE);
 
-                    ArrayList<String> glaslist = mMainActivityViewModel.getListOfGlas();
-                    ArrayAdapter<String> adapterForGlas = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glaslist);
+
+                    ArrayAdapter<String> adapterForGlas = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfGlas());
                     adapterForGlas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
                     glasSelection.setAdapter(adapterForGlas);
                     glasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -100,11 +100,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        price = (TextView) findViewById(R.id.price);
-        width = (TextView) findViewById(R.id.widthOfGlas);
-        height = (TextView) findViewById(R.id.heightOfGlas);
         fag = (TextView) findViewById(R.id.amountOfFag);
-        glas = (TextView) findViewById(R.id.amountOfGlas);
+
 
         mMainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
@@ -115,18 +112,22 @@ public class MainActivity extends AppCompatActivity {
 
 }
     public void send(View view) {
-        mMainActivityViewModel.setheight(Integer.parseInt((String.valueOf(hight.getText()))));
-        mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(brede.getText()))));
+        mMainActivityViewModel.setheight(Integer.parseInt((String.valueOf(height.getText()))));
+        mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(width.getText()))));
 
+        amountOfFagSelection.setVisibility(View.VISIBLE);
+        amountOfGlasSelection.setVisibility(View.VISIBLE);
+        doorCheckBox.setVisibility(View.VISIBLE);
+        glassCheckBox.setVisibility(View.VISIBLE);
+        wetroomCheckBox.setVisibility(View.VISIBLE);
 
-        ArrayList<Integer> fagliste = mMainActivityViewModel.getAdapterForFag();
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, fagliste);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getAdapterForFag());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-        fagSpinner.setAdapter(adapter);
-        fagSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        amountOfFagSelection.setAdapter(adapter);
+        amountOfFagSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mMainActivityViewModel.widthPicedFromDropDown(position);
+                mMainActivityViewModel.widthPickedFromDropDown(position);
             }
 
             @Override
@@ -137,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Integer> glasListe = mMainActivityViewModel.getAdapterForGlas();
             ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glasListe);
             adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            glasspinner.setAdapter(adapter2);
-            glasspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            amountOfGlasSelection.setAdapter(adapter2);
+            amountOfGlasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                   mMainActivityViewModel.heightPicedFromDropDown(position);
+                   mMainActivityViewModel.heightPickedFromDropDown(position);
                 }
 
                 @Override

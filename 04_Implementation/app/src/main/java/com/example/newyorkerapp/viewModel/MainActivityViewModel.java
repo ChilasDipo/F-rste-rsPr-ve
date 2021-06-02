@@ -49,17 +49,11 @@ public class MainActivityViewModel extends ViewModel {
 
     }
     public ArrayList<String> getListOfDoors(){
-        ArrayList<String> nameListForDoors  = new ArrayList<String>(fireBaseDAOimpl.getListOfDoors().keySet());
-        ArrayList<Integer> priceListForDoors  = new ArrayList<Integer>(fireBaseDAOimpl.getListOfDoors().values());
-        //price.setPriceListForDoors();
-        return nameListForDoors;
+        return new ArrayList<String>(fireBaseDAOimpl.getListOfDoors());
 
     }
     public ArrayList<String> getListOfGlas(){
-        ArrayList<String> nameListForGlas  = new ArrayList<String>(fireBaseDAOimpl.getListOfGlas().keySet());
-        ArrayList<Integer> priceListForglas = new ArrayList<Integer>(fireBaseDAOimpl.getListOfGlas().values());
-        //Price.setPriceLsitForglas();
-        return nameListForGlas;
+        return new ArrayList<String>(fireBaseDAOimpl.getListOfGlas());
     }
 
     public void setlenght(int lenght) {
@@ -70,11 +64,11 @@ public class MainActivityViewModel extends ViewModel {
         }
         wallObject.setValue(wall);
     }
-    public void heightPicedFromDropDown(int position){
+    public void heightPickedFromDropDown(int position){
         wall.setFinalHeightOfGlas(position);
         wallObject.setValue(wall);
     }
-    public void widthPicedFromDropDown(int position){
+    public void widthPickedFromDropDown(int position){
         wall.setFinalLengthOfGlas(position);
         wallObject.setValue(wall);
     }
@@ -87,13 +81,11 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public String getInfoAboutWall(){
-        StringBuilder string = new StringBuilder();
-        string.append("Glases højde er  ");
-        string.append(wall.getFinalHeightOfGlas()).append("\n");
-        string.append("glasses brede er ");
-        string.append(wall.getFinalLengthOfGlas()).append("\n");
-        string.append("Væggens pris er ");
-        string.append(wall.getPriceOfWall());
-        return string.toString();
+        return "Glases højde er  " +
+                wall.getFinalHeightOfGlas() + "\n" +
+                "glasses brede er " +
+                wall.getFinalLengthOfGlas() + "\n" +
+                "Væggens pris er " +
+                wall.getPriceOfWall();
     }
 }

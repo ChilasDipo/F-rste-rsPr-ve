@@ -37,7 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/door"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"/>
 
     <CheckBox
         android:id="@+id/door"
@@ -48,7 +49,8 @@
         android:layout_marginTop="13dp"
         android:text="@string/checkBox_Main_door_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wetroom" />
+        app:layout_constraintTop_toBottomOf="@+id/wetroom"
+        android:visibility="invisible"/>
 
     <Spinner
         android:id="@+id/glasSelection"
@@ -73,7 +75,8 @@
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fagspinner"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/height"
@@ -155,23 +158,6 @@
             android:layout_height="wrap_content"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/amountOfGlas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/heightOfGlas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/widthOfGlas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp" />
     </LinearLayout>
 
     <Button
@@ -197,7 +183,8 @@
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/height"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"/>
 
     <CheckBox
         android:id="@+id/wetroom"
@@ -212,6 +199,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/glasspinner" />
+        app:layout_constraintTop_toBottomOf="@+id/glasspinner"
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
