@@ -1,24 +1,14 @@
 package com.example.newyorkerapp.viewModel;
 
-import android.widget.ArrayAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.newyorkerapp.model.data.Wall;
 import com.example.newyorkerapp.model.data.Wallimpl;
-import com.example.newyorkerapp.model.exceptions.AmountOfGlassOrFagUnableToBeCalculated;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class MainActivityViewModel extends ViewModel {
 
@@ -49,19 +39,14 @@ public class MainActivityViewModel extends ViewModel {
         listOfWalls.add(new Wallimpl());
     }
 
-
     public void setheight(int height) {
         try {
-            wall.setHeight(height);
+            wall.setHeightOfTheWall(height);
         } catch (InputMangler inputMangler) {
             inputMangler.printStackTrace();
         }
         wallObject.setValue(wall);
 
-    }
-
-   public ArrayList<String> getListOfExstaFromDB(){
-        return fireBaseDAOimpl.getListOfExtraFeturesFromDB();
     }
     public ArrayList<String> getListOfDoors(){
         ArrayList<String> nameListForDoors  = new ArrayList<String>(fireBaseDAOimpl.getListOfDoors().keySet());
@@ -79,7 +64,7 @@ public class MainActivityViewModel extends ViewModel {
 
     public void setlenght(int lenght) {
         try {
-            wall.setLength(lenght);
+            wall.setLengthOfTheWall(lenght);
         } catch (InputMangler inputMangler) {
             inputMangler.printStackTrace();
         }
@@ -111,16 +96,4 @@ public class MainActivityViewModel extends ViewModel {
         string.append(wall.getPriceOfWall());
         return string.toString();
     }
-
-   /* public double getPrice() {
-        double price = 0;
-        try {
-             price = wall.getPriceOfWall();
-        } catch (AmountOfGlassOrFagUnableToBeCalculated amountOfGlassOrFagUnableToBeCalculated) {
-            amountOfGlassOrFagUnableToBeCalculated.printStackTrace();
-        }
-        return price;
-    }*/
-
-
 }
