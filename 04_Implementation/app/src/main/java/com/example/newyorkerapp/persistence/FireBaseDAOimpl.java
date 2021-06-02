@@ -31,17 +31,6 @@ public class FireBaseDAOimpl{
       System.out.println("Price is " + priceOfGlass);
       return priceOfGlass;
    }
-
-   public ArrayList<String> getListOfExtraFeturesFromDB()  {
-      fetureList  = new ArrayList<>(nameAndPricesForItems.keySet());
-      System.out.println("Feturelist" + fetureList.toString());
-     return fetureList;
-   }
-   public ArrayList<Integer> getPriceOfExtraFeturesFromDB() {
-      priceListForFetures  = new ArrayList<>(nameAndPricesForItems.values());
-      System.out.println("Feturelist" + fetureList.toString());
-      return priceListForFetures;
-   }
    public HashMap<String,Integer> getListOfDoors()  {
       return nameAndPricesForDoors;
    }

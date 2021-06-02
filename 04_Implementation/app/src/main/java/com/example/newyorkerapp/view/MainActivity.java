@@ -100,13 +100,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         price = (TextView) findViewById(R.id.price);
         width = (TextView) findViewById(R.id.widthOfGlas);
         height = (TextView) findViewById(R.id.heightOfGlas);
         fag = (TextView) findViewById(R.id.amountOfFag);
         glas = (TextView) findViewById(R.id.amountOfGlas);
-
 
         mMainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
@@ -115,13 +113,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
 }
-
     public void send(View view) {
         mMainActivityViewModel.setheight(Integer.parseInt((String.valueOf(hight.getText()))));
         mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(brede.getText()))));
-
 
 
         ArrayList<Integer> fagliste = mMainActivityViewModel.getAdapterForFag();
@@ -154,28 +149,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-
-            //Skal flyttes
-
-       /* ArrayList<String> databasefetures = mMainActivityViewModel.getListOfExstaFromDB();
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, databasefetures);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        glasspinner2.setAdapter(adapter3);
-        glasspinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("Feture piced");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
-
-
-
 }
 public void mailsend(View view) {
        /* Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
