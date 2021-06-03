@@ -8,6 +8,7 @@ import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivityViewModel extends ViewModel {
@@ -17,11 +18,20 @@ public class MainActivityViewModel extends ViewModel {
     private Wallimpl wall;
     FireBaseDAOimpl fireBaseDAOimpl;
     ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
+
+
+
+
+
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
         fireBaseDAOimpl = new FireBaseDAOimpl();
         addWall();
-        selectWall();
+        addWall();
+        addWall();
+        addWall();
+        addWall();
+        selectWall(0);
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
     public LiveData<Wallimpl> getWall() {
@@ -31,15 +41,34 @@ public class MainActivityViewModel extends ViewModel {
         return wallObject;
     }
 
-    void selectWall(){
-        wall = listOfWalls.get(0);
+    public ArrayList<String> getListOfWalls(){
+        ArrayList<String> namesOfWall = new ArrayList<>();
+        for (int i = 0; i <listOfWalls.size() ; i++) {
+            namesOfWall.add("wall number" + i );
+        }
+        return namesOfWall;
+    }
+
+    public void selectWall(int i){
+        wall = listOfWalls.get(i);
+        wallObject.setValue(wall);
     }
         // disse 2 funktioner kan ændres så man kan vælge et væg obejct
     void addWall(){
         listOfWalls.add(new Wallimpl());
     }
 
-    public void setheight(int height) {
+    public int getHeight(){
+       return wall.getFinalHeightOfGlas();
+    }
+    public int getLength(){
+        return wall.getFinalLengthOfGlas();
+    }
+    public double getPrice(){
+        return wall.getPriceOfWall();
+    }
+
+    public void setHeight(int height) {
         try {
             wall.setHeightOfTheWall(height);
         } catch (InputMangler inputMangler) {
@@ -54,6 +83,9 @@ public class MainActivityViewModel extends ViewModel {
     }
     public ArrayList<String> getListOfGlas(){
         return new ArrayList<String>(fireBaseDAOimpl.getListOfGlas());
+    }
+    public void doorSelection(int position){
+        wall.setHasDoor(true);
     }
 
     public void setlenght(int lenght) {
