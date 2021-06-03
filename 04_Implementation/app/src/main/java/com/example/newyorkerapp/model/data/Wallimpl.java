@@ -12,10 +12,10 @@ public class Wallimpl {
 
     private Boolean wallBigEnouthForExtraFee, wallIsInAWetRoom, hasDoor, hasSpecialGlas;
 
-    ArrayList<Integer> fagliste = new ArrayList<>();
-    ArrayList<Integer> glasliste = new ArrayList<>();
-    ArrayList<Integer> lenthOfFagList = new ArrayList<>();
-    ArrayList<Integer> heightOfGlassliste = new ArrayList<>();
+    private ArrayList<Integer> fagliste = new ArrayList<>();
+    private ArrayList<Integer> glasliste = new ArrayList<>();
+    private  ArrayList<Integer> lenthOfFagList = new ArrayList<>();
+    private  ArrayList<Integer> heightOfGlassliste = new ArrayList<>();
 
     public Wallimpl() {
         heightOfTheWall = 0;

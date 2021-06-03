@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText width, height;
     private TextView  fag;
     private Spinner amountOfFagSelection, amountOfGlasSelection, doorSelection,glasSelection;
-    private CheckBox glassCheckBox, wetroomCheckBox, doorCheckBox;
+    private CheckBox glassCheckBox, wetRoomCheckBox, doorCheckBox;
      MainActivityViewModel mMainActivityViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,64 +40,10 @@ public class MainActivity extends AppCompatActivity {
         glasSelection = findViewById(R.id.glasSelection);
 
         glassCheckBox = findViewById(R.id.glass);
-        wetroomCheckBox = findViewById(R.id.wetroom);
+        wetRoomCheckBox = findViewById(R.id.wetroom);
         doorCheckBox = findViewById(R.id.door);
 
-       doorCheckBox.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if (doorCheckBox.isChecked()){
-                   doorSelection.setVisibility(View.VISIBLE);
-
-                   ArrayList<String> doorlist = mMainActivityViewModel.getListOfDoors();
-                   ArrayAdapter<String> adapterForDoors = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, doorlist);
-                   adapterForDoors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-                   doorSelection.setAdapter(adapterForDoors);
-                   doorSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                       @Override
-                       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                       }
-
-                       @Override
-                       public void onNothingSelected(AdapterView<?> parent) {
-
-                       }
-                   });
-
-               }else{
-                   doorSelection.setVisibility(View.INVISIBLE);
-               }
-           }
-       });
-
-        glassCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (glassCheckBox.isChecked()){
-                    glasSelection.setVisibility(View.VISIBLE);
-
-
-                    ArrayAdapter<String> adapterForGlas = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfGlas());
-                    adapterForGlas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
-                    glasSelection.setAdapter(adapterForGlas);
-                    glasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-                }else{
-                    glasSelection.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
+        initializeOnClickListeners();
 
 
         fag = (TextView) findViewById(R.id.amountOfFag);
@@ -110,16 +56,81 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
 }
+
+void  initializeOnClickListeners(){
+    doorCheckBox.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (doorCheckBox.isChecked()){
+                doorSelection.setVisibility(View.VISIBLE);
+
+                ArrayList<String> doorlist = mMainActivityViewModel.getListOfDoors();
+                ArrayAdapter<String> adapterForDoors = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, doorlist);
+                adapterForDoors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+                doorSelection.setAdapter(adapterForDoors);
+                doorSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+            }else{
+                doorSelection.setVisibility(View.INVISIBLE);
+            }
+        }
+    });
+
+    glassCheckBox.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (glassCheckBox.isChecked()){
+                glasSelection.setVisibility(View.VISIBLE);
+
+                ArrayAdapter<String> adapterForGlas = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfGlas());
+                adapterForGlas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+                glasSelection.setAdapter(adapterForGlas);
+                glasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+            }else{
+                glasSelection.setVisibility(View.INVISIBLE);
+            }
+        }
+    });
+
+
+
+}
+
+
+
     public void send(View view) {
-        mMainActivityViewModel.setheight(Integer.parseInt((String.valueOf(height.getText()))));
+        mMainActivityViewModel.setHeight(Integer.parseInt((String.valueOf(height.getText()))));
         mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(width.getText()))));
 
         amountOfFagSelection.setVisibility(View.VISIBLE);
         amountOfGlasSelection.setVisibility(View.VISIBLE);
         doorCheckBox.setVisibility(View.VISIBLE);
         glassCheckBox.setVisibility(View.VISIBLE);
-        wetroomCheckBox.setVisibility(View.VISIBLE);
+        wetRoomCheckBox.setVisibility(View.VISIBLE);
 
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getAdapterForFag());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
