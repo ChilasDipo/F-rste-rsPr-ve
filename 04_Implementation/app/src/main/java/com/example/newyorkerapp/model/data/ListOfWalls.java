@@ -7,15 +7,18 @@ import java.util.List;
 
 public class ListOfWalls {
 
-    private ArrayList<Wallimpl> listofwalls = new ArrayList<>();
+   // private ArrayList<Wallimpl> listofwalls = new ArrayList<>();
     private MutableLiveData<List<Wall>> ListOfWalls;
 
-    public void addWall (Wallimpl wall){
-        listofwalls.add(wall);
+    private static ArrayList<Wallimpl> content = new ArrayList<>();
+
+    public static ArrayList<Wallimpl> getContent(){
+        return content;
     }
 
-    public Wallimpl getwall (int i){
-       return listofwalls.get(i);
+    public static void addToList(){
+        content.add(new Wallimpl());
     }
+
 
 }

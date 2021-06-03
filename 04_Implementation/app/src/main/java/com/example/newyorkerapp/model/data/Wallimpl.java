@@ -1,21 +1,20 @@
 package com.example.newyorkerapp.model.data;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
+import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 import com.google.api.DocumentationOrBuilder;
 
 import java.util.ArrayList;
 
 
 public class Wallimpl {
-   private int heightOfTheWall, lengthOfTheWall, amountOfFag, amountOfGlas, finalLengthOfGlas, finalHeightOfGlas;
 
+   private int heightOfTheWall, lengthOfTheWall, amountOfFag, amountOfGlas, finalLengthOfGlas, finalHeightOfGlas;
 
     private double priceOfWall;
 
-    private Boolean wallBigEnouthForExtraFee, wallIsInAWetRoom, hasDoor, hasSpecialGlas;
+    private Boolean  wetRoom;
 
-    SpecialGlass specialGlass = new SpecielGlass();
-    Door door = new Door();
-    
+    FireBaseDAOimpl fireBaseDAOimpl;
 
     private ArrayList<Integer> fagliste = new ArrayList<>();
     private ArrayList<Integer> glasliste = new ArrayList<>();
@@ -25,30 +24,19 @@ public class Wallimpl {
     public Wallimpl() {
         heightOfTheWall = 0;
         lengthOfTheWall = 0;
+        fireBaseDAOimpl = new FireBaseDAOimpl();
+        wetRoom=false;
+
+    }
+    public void setWetRoom(Boolean clicked){
+            wetRoom = clicked;
     }
 
-    public Boolean getWallIsInAWetRoom() {
-        return wallIsInAWetRoom;
+    public void selectDoor(int position){
+        //doortype.selectDoor(position)
     }
-
-    public void setWallIsInAWetRoom(Boolean wallIsInAWetRoom) {
-        this.wallIsInAWetRoom = wallIsInAWetRoom;
-    }
-
-    public Boolean getHasDoor() {
-        return hasDoor;
-    }
-
-    public void setHasDoor(Boolean hasDoor) {
-        this.hasDoor = hasDoor;
-    }
-
-    public Boolean getHasSpecialGlas() {
-        return hasSpecialGlas;
-    }
-
-    public void setHasSpecialGlas(Boolean hasSpecialGlas) {
-        this.hasSpecialGlas = hasSpecialGlas;
+    public void selectGlass(int position){
+        //glasstype.selectDoor(position)
     }
 
     public void setFinalHeightOfGlas(int finalHeightOfGlas) {
@@ -60,12 +48,7 @@ public class Wallimpl {
         this.finalLengthOfGlas = lenthOfFagList.get(finalLengthOfGlas);
         amountOfFag = fagliste.get(finalLengthOfGlas);
     }
-    void calculateWallBigEnouthForExtraFee(){
-        if (finalLengthOfGlas*finalHeightOfGlas == 5000){
-            wallBigEnouthForExtraFee=true;
-        }
-        else wallBigEnouthForExtraFee=false;
-    }
+
     public int getFinalHeightOfGlas() {
         return finalHeightOfGlas;
     }
@@ -116,15 +99,29 @@ public class Wallimpl {
         System.out.println("Antal fag " + fagliste.toString());
         System.out.println("Fag længder " + lenthOfFagList.toString());
     }
-    //TODO move to price klass
-    public double getPriceOfWall() {
-        calculateWallBigEnouthForExtraFee();
-        if (wallBigEnouthForExtraFee){
-            priceOfWall = (amountOfFag * amountOfGlas) * 1470;
-            return priceOfWall;
+    Boolean calculateWallBigEnouthForExtraFee(){
+        if (finalLengthOfGlas*finalHeightOfGlas == 5000){
+            return true;
         }
-        priceOfWall = (amountOfFag * amountOfGlas) * 985;
+        else return false;
+    }
+    public double getPriceOfWall() {
+        int amountOfGlassInWall = amountOfFag * amountOfGlas;
+
+        //setter prisen for glas og lægger tillæget til for hver condition som er true
+        double pricePerGlass = fireBaseDAOimpl.getPriceOfGlass();
+
+        if (calculateWallBigEnouthForExtraFee()){ pricePerGlass =+ fireBaseDAOimpl.getFeeForBigGlass(); }
+        if (wetRoom=true){ pricePerGlass =+ fireBaseDAOimpl.getFeeForWetRoom(); }
+
+        priceOfWall = (amountOfGlassInWall) * pricePerGlass;
         return priceOfWall;
     }
 
+    public ArrayList<String> getListOfDoors() {
+        return fireBaseDAOimpl.getListOfDoors();
+    }
+    public ArrayList<String> getListOfGlass() {
+        return fireBaseDAOimpl.getListOfGlas();
+    }
 }

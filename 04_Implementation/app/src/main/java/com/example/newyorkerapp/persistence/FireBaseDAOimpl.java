@@ -12,16 +12,26 @@ import java.util.HashMap;
 
 
 public class FireBaseDAOimpl{
-   private double priceOfGlass = 985;
-   private double feeForBigGlass = 485;
+   private double priceOfGlass;
+   private double feeForBigGlass ;
+   private double feeForWetRoom;
    private  HashMap<String, Integer> nameAndPricesForDoors = new HashMap<>();
    private  HashMap<String, Integer> nameAndPricesForGlas = new HashMap<>();
    private ArrayList<String> fetureList;
    private ArrayList<Integer> priceListForDoors;
 
+
    public FireBaseDAOimpl() {
       buildHashMapsForFetureNameAndPrice();
      // connect();
+   }
+
+   public double getFeeForBigGlass(){
+      return feeForBigGlass;
+   }
+
+   public double getFeeForWetRoom(){
+      return feeForWetRoom;
    }
 
    public double getPriceOfGlass(){
@@ -85,6 +95,32 @@ public class FireBaseDAOimpl{
 
          @Override
          public void onCancelled(@NonNull DatabaseError error) {
+         }
+      });
+      ref = database.getReference("/stortfelt");
+      ref.addListenerForSingleValueEvent(new ValueEventListener() {
+         @Override
+         public void onDataChange(@NonNull DataSnapshot snapshot) {
+            feeForBigGlass = snapshot.getValue(Integer.class);
+            //Set priceOfglass(snapshot.getValue(Integer.class))
+         }
+
+         @Override
+         public void onCancelled(@NonNull DatabaseError error) {
+         }
+      });
+
+      ref = database.getReference("/pris/wetroom");
+      ref.addListenerForSingleValueEvent(new ValueEventListener() {
+         @Override
+         public void onDataChange(@NonNull DataSnapshot snapshot) {
+            feeForWetRoom = snapshot.getValue(Integer.class);
+            //Set priceOfglass(snapshot.getValue(Integer.class))
+         }
+
+         @Override
+         public void onCancelled(@NonNull DatabaseError error) {
+
          }
       });
 
