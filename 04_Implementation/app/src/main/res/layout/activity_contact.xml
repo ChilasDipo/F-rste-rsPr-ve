@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextKontaktEmail"
+        android:layout_width="328dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/editText_Kontakt_email_hint"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextKontaktName" />
+
+    <EditText
+        android:id="@+id/editTextKontaktPhonenumber"
+        android:layout_width="328dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/editText_Kontakt_phonenumber_hint"
+        android:inputType="text|number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextKontaktEmail" />
+
+    <EditText
+        android:id="@+id/editTextKontaktAdress"
+        android:layout_width="328dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/editText_kontakt_adresse_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextKontaktPhonenumber" />
+
+    <Button
+        android:id="@+id/buttonKontaktSend"
+        android:layout_width="106dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:text="@string/editText_Kontakt_send_hint"
+        app:backgroundTint="#BB8C54"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857" />
+
+    <Button
+        android:id="@+id/buttonKontaktKontaktOs"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_button_menu"
+        android:text="@string/button_Kontakt_kontakt_text"
+        android:textColor="#BB8C54"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonKontaktKatalog" />
+
+    <Button
+        android:id="@+id/buttonKontaktKatalog"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_button_menu"
+        android:text="@string/button_Kontakt_katalog_text"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonKontaktMeasure"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_buttom_higlight"
+        android:text="@string/button_Kontakt_measure_text"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonKontaktKatalog"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextKontaktName"
+        android:layout_width="328dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="@string/editText_Kontakt_name_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="327dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/editText_Kontakt_besked_hint"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextKontaktAdress" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
