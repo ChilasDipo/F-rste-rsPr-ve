@@ -7,6 +7,43 @@
     android:background="#FFFFFF"
     tools:context=".view.MainActivity">
 
+    <Button
+        android:id="@+id/buttonKontaktMeasure2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_buttom_higlight"
+        android:text="@string/button_Kontakt_measure_text"
+        android:textColor="#BB8C54"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonKontaktKatalog2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonKontaktKatalog2"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_button_menu"
+        android:text="@string/button_Kontakt_katalog_text"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonKontaktKontaktOs2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_button_menu"
+        android:text="@string/button_Kontakt_kontakt_text"
+        android:textColor="#ffffff"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonKontaktKatalog2" />
+
     <Spinner
         android:id="@+id/doorSelection"
         android:layout_width="211dp"
