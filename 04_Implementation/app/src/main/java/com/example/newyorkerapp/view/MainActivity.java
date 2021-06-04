@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private EditText width, height;
     private TextView  fag;
-    private Spinner amountOfFagSelection, amountOfGlasSelection, doorSelection,glasSelection;
+    private Spinner amountOfFagSelection, amountOfGlasSelection, doorSelection,glasSelection,doorHandleSelection;
     private CheckBox glassCheckBox, wetRoomCheckBox, doorCheckBox;
      MainActivityViewModel mMainActivityViewModel;
      private Button buttonKontaktKontaktOs,buttonKontaktKatalog;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         amountOfGlasSelection = findViewById(R.id.glasspinner);
         doorSelection = findViewById(R.id.doorSelection);
         glasSelection = findViewById(R.id.glasSelection);
+        doorHandleSelection = findViewById(R.id.doorHandleSelection);
 
         glassCheckBox = findViewById(R.id.glass);
         wetRoomCheckBox = findViewById(R.id.wetroom);
@@ -73,6 +74,7 @@ void  initializeOnClickListeners(){
             mMainActivityViewModel.setHasDoor(doorCheckBox.isChecked());
             if (doorCheckBox.isChecked()){
                 doorSelection.setVisibility(View.VISIBLE);
+                doorHandleSelection.setVisibility((View.VISIBLE));
                 ArrayList<String> doorlist = mMainActivityViewModel.getListOfDoors();
                 ArrayAdapter<String> adapterForDoors = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, doorlist);
                 adapterForDoors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
@@ -89,11 +91,28 @@ void  initializeOnClickListeners(){
                     }
                 });
 
+                ArrayAdapter<String> adapterForDoorGrip = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfDoorgrips());
+                adapterForDoorGrip.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+                doorHandleSelection.setAdapter(adapterForDoorGrip);
+                doorHandleSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
             }else{
                 doorSelection.setVisibility(View.INVISIBLE);
+                doorHandleSelection.setVisibility(View.INVISIBLE);
             }
         }
     });
+
 
     glassCheckBox.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -149,8 +168,6 @@ void  initializeOnClickListeners(){
 
 }
 
-
-
     public void send(View view) {
         mMainActivityViewModel.setHeight(Integer.parseInt((String.valueOf(height.getText()))));
         mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(width.getText()))));
@@ -192,6 +209,8 @@ void  initializeOnClickListeners(){
             });
 }
 public void mailsend(View view) {
+
+        //This metod does not work on emulator
     String[] addresses = {"chil0041@edu.easj.dk"};
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
     emailIntent.setData(Uri.parse("mailto:"));
@@ -202,8 +221,6 @@ public void mailsend(View view) {
     if (emailIntent.resolveActivity(getPackageManager()) != null) {
         startActivity(Intent.createChooser(emailIntent, "Send feedback"));
     }
-
-
 
     /* sending gennem API
         SendGrid sendGrid = SendGrid.create("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");

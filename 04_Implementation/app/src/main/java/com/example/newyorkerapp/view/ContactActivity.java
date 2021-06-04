@@ -1,6 +1,9 @@
 package com.example.newyorkerapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +15,17 @@ public class ContactActivity extends AppCompatActivity {
     private String name, address, message, email;
     private int phonenumber;
 
+    Button buttonKontaktMeasure, buttonKontaktKatalog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        getSupportActionBar().hide();
+
+        buttonKontaktKatalog = findViewById(R.id.buttonKontaktKatalog);
+        buttonKontaktMeasure = findViewById(R.id.buttonKontaktMeasure);
+        initializeOnClickListeners();
     }
 
     public int getPhonenumber() {
@@ -70,4 +80,25 @@ public class ContactActivity extends AppCompatActivity {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    void initializeOnClickListeners(){
+        buttonKontaktMeasure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ContactActivity.this, MainActivity.class);
+                startActivity(myIntent);
+
+            }
+        });
+        buttonKontaktKatalog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ContactActivity.this, ContactActivity.class);
+                startActivity(myIntent);
+            }
+        });
+    }
+
+
+
 }

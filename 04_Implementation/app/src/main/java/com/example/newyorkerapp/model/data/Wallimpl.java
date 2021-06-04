@@ -137,4 +137,7 @@ public class Wallimpl {
     public ArrayList<String> getListOfGlass() {
         return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForGlass().keySet());
     }
+    public ArrayList<String> getListOfDoorGrips() {
+        return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForDoorHandel().keySet());
+    }
 }

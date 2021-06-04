@@ -75,6 +75,9 @@ public class MainActivityViewModel extends ViewModel {
     public ArrayList<String> getListOfGlas(){
         return new ArrayList<String>(wall.getListOfGlass());
     }
+    public ArrayList<String> getListOfDoorgrips(){
+        return new ArrayList<String>(wall.getListOfDoorGrips());
+    }
 
     public void selectDoor(int position){
         wall.selectDoor(position);
@@ -117,9 +120,8 @@ public class MainActivityViewModel extends ViewModel {
     public ArrayList<Integer> getAdapterForFag(){
         return wall.getFagliste();
     }
-    public ArrayList<Integer> getAdapterForGlas(){
-        return wall.getGlasliste();
-    }
+    public ArrayList<Integer> getAdapterForGlas(){ return wall.getGlasliste(); }
+
 
     public String getInfoAboutWall(){
         return "Glases højde er  " +
