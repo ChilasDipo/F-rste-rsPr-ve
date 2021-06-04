@@ -1,5 +1,6 @@
 package com.example.newyorkerapp.model.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
@@ -7,15 +8,18 @@ import java.util.List;
 
 public class ListOfWalls {
 
-    private ArrayList<Wallimpl> listofwalls = new ArrayList<>();
-    private MutableLiveData<List<Wall>> ListOfWalls;
+   // private ArrayList<Wallimpl> listofwalls = new ArrayList<>();
 
-    public void addWall (Wallimpl wall){
-        listofwalls.add(wall);
+
+    private static ArrayList<Wallimpl> content = new ArrayList<>();
+
+    public static ArrayList<Wallimpl> getContent(){
+        return content;
     }
 
-    public Wallimpl getwall (int i){
-       return listofwalls.get(i);
+    public static void addToList(){
+        content.add(new Wallimpl());
     }
+
 
 }

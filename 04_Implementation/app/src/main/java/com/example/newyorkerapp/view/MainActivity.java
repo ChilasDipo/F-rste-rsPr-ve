@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner amountOfFagSelection, amountOfGlasSelection, doorSelection,glasSelection;
     private CheckBox glassCheckBox, wetRoomCheckBox, doorCheckBox;
      MainActivityViewModel mMainActivityViewModel;
+     private Button buttonKontaktKontaktOs,buttonKontaktKatalog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         glassCheckBox = findViewById(R.id.glass);
         wetRoomCheckBox = findViewById(R.id.wetroom);
         doorCheckBox = findViewById(R.id.door);
+
+        buttonKontaktKontaktOs = findViewById(R.id.buttonKontaktKontaktOs2);
+        buttonKontaktKatalog = findViewById(R.id.buttonKontaktKatalog2);
 
         initializeOnClickListeners();
 
@@ -74,7 +80,7 @@ void  initializeOnClickListeners(){
                 doorSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                        mMainActivityViewModel.selectDoor(position);
                     }
 
                     @Override
@@ -101,7 +107,7 @@ void  initializeOnClickListeners(){
                 glasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                        mMainActivityViewModel.selectGlass(position);
                     }
 
                     @Override
@@ -115,7 +121,29 @@ void  initializeOnClickListeners(){
             }
         }
     });
+    wetRoomCheckBox.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mMainActivityViewModel.setWetRoom(wetRoomCheckBox.isChecked());
+        }
+    });
 
+
+    buttonKontaktKontaktOs.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent myIntent = new Intent(MainActivity.this, ContactActivity.class);
+            startActivity(myIntent);
+
+        }
+    });
+    buttonKontaktKatalog.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(myIntent);
+        }
+    });
 
 
 }
@@ -163,11 +191,16 @@ void  initializeOnClickListeners(){
             });
 }
 public void mailsend(View view) {
-       /* Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:chil0041@edu.easj.dk"));
+    String[] addresses = {"chil0041@edu.easj.dk"};
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+    emailIntent.setData(Uri.parse("mailto:"));
+   // emailIntent.setData(Uri.parse("mailto:chil0041@edu.easj.dk"));
+    emailIntent.putExtra(Intent.EXTRA_EMAIL, addresses);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Subject Here");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Væggen er"  + wall.getAllowedAmountOfFag()+ "fag bred og  Væggen er" + wall.getAllowedAmountOfGlas() +" glas høj ");
-        startActivity(Intent.createChooser(emailIntent, "Send feedback"));*/
+        emailIntent.putExtra(Intent.EXTRA_TEXT, mMainActivityViewModel.getInfoAboutWall());
+    if (emailIntent.resolveActivity(getPackageManager()) != null) {
+        startActivity(Intent.createChooser(emailIntent, "Send feedback"));
+    }
 
 
 

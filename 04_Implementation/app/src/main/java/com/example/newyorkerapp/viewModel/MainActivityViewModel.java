@@ -4,34 +4,33 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.newyorkerapp.model.data.ListOfWalls;
 import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private MutableLiveData<Double> price;
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
-    FireBaseDAOimpl fireBaseDAOimpl;
-    ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
 
-
-
-
+     ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
 
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
-        fireBaseDAOimpl = new FireBaseDAOimpl();
         addWall();
         addWall();
         addWall();
         addWall();
         addWall();
         selectWall(0);
+
+
+
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
     public LiveData<Wallimpl> getWall() {
@@ -39,14 +38,6 @@ public class MainActivityViewModel extends ViewModel {
             wallObject = new MutableLiveData<>();
         }
         return wallObject;
-    }
-
-    public ArrayList<String> getListOfWalls(){
-        ArrayList<String> namesOfWall = new ArrayList<>();
-        for (int i = 0; i <listOfWalls.size() ; i++) {
-            namesOfWall.add("wall number" + i );
-        }
-        return namesOfWall;
     }
 
     public void selectWall(int i){
@@ -78,14 +69,24 @@ public class MainActivityViewModel extends ViewModel {
 
     }
     public ArrayList<String> getListOfDoors(){
-        return new ArrayList<String>(fireBaseDAOimpl.getListOfDoors());
+        return new ArrayList<String>(wall.getListOfDoors());
 
     }
     public ArrayList<String> getListOfGlas(){
-        return new ArrayList<String>(fireBaseDAOimpl.getListOfGlas());
+        return new ArrayList<String>(wall.getListOfGlass());
     }
-    public void doorSelection(int position){
-        wall.setHasDoor(true);
+
+    public void selectDoor(int position){
+        wall.selectDoor(position);
+        wallObject.setValue(wall);
+    }
+    public void selectGlass(int position){
+        wall.selectGlass(position);
+        wallObject.setValue(wall);
+    }
+    public void setWetRoom(Boolean clicked){
+        wall.setWetRoom(clicked);
+        wallObject.setValue(wall);
     }
 
     public void setlenght(int lenght) {
