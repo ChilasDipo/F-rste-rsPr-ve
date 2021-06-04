@@ -11,28 +11,17 @@ import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private MutableLiveData<Double> price;
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
 
-    private MutableLiveData<ListOfWalls> listOfWallsClass;
-
-    ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
-
-
-    private static MutableLiveData<ListOfWalls> ListOfWalls;
-
-    public static LiveData getLivedata(){
-        return ListOfWalls;
-    }
-
+     ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
 
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
-
         addWall();
         addWall();
         addWall();
@@ -40,7 +29,7 @@ public class MainActivityViewModel extends ViewModel {
         addWall();
         selectWall(0);
 
-        listOfWallsClass.getValue();
+
 
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383

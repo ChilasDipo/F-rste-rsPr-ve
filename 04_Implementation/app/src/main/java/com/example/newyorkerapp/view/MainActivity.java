@@ -124,7 +124,7 @@ void  initializeOnClickListeners(){
     wetRoomCheckBox.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mMainActivityViewModel.setWetRoom(glassCheckBox.isChecked());
+            mMainActivityViewModel.setWetRoom(wetRoomCheckBox.isChecked());
         }
     });
 

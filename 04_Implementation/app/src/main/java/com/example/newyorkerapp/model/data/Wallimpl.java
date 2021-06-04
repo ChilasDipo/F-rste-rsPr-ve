@@ -111,15 +111,19 @@ public class Wallimpl {
         //setter prisen for glas og lægger tillæget til for hver condition som er true
         double pricePerGlass = fireBaseDAOimpl.getPriceOfGlass();
 
-        if (calculateWallBigEnouthForExtraFee()){ pricePerGlass =+ fireBaseDAOimpl.getFeeForBigGlass(); }
-        if (wetRoom=true){ pricePerGlass =+ fireBaseDAOimpl.getFeeForWetRoom(); }
+        if (calculateWallBigEnouthForExtraFee()){ pricePerGlass += fireBaseDAOimpl.getFeeForBigGlass(); }
+        if (wetRoom){ pricePerGlass += fireBaseDAOimpl.getFeeForWetRoom();}
+        // if (door.hasDoor()==true){ pricePerGlass += door.priceForDoor()}
+        // if (glass.hasDoor()==true){ pricePerGlass += glass.priceForGlass()}
 
         priceOfWall = (amountOfGlassInWall) * pricePerGlass;
         return priceOfWall;
     }
 
     public ArrayList<String> getListOfDoors() {
-        return fireBaseDAOimpl.getListOfDoors();
+        //fireBaseDAOimpl.getNamesAndPrice();
+
+        return new ArrayList<>(fireBaseDAOimpl.getNamesAndPrice().keySet());
     }
     public ArrayList<String> getListOfGlass() {
         return fireBaseDAOimpl.getListOfGlas();

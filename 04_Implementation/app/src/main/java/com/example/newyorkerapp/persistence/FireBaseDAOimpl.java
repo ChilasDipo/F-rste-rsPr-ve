@@ -26,6 +26,10 @@ public class FireBaseDAOimpl{
      // connect();
    }
 
+   public HashMap<String, Integer> getNamesAndPrice(){
+      return nameAndPricesForDoors;
+   }
+
    public double getFeeForBigGlass(){
       return feeForBigGlass;
    }
@@ -89,7 +93,7 @@ public class FireBaseDAOimpl{
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot snapshot) {
-            priceOfGlass = snapshot.getValue(Integer.class);
+            priceOfGlass = snapshot.getValue(Double.class);
             //Set priceOfglass(snapshot.getValue(Integer.class))
          }
 
@@ -101,7 +105,7 @@ public class FireBaseDAOimpl{
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot snapshot) {
-            feeForBigGlass = snapshot.getValue(Integer.class);
+            feeForBigGlass = snapshot.getValue(Double.class);
             //Set priceOfglass(snapshot.getValue(Integer.class))
          }
 
@@ -114,7 +118,8 @@ public class FireBaseDAOimpl{
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot snapshot) {
-            feeForWetRoom = snapshot.getValue(Integer.class);
+            feeForWetRoom = snapshot.getValue(Double.class);
+            System.out.println("fee is " + feeForWetRoom);
             //Set priceOfglass(snapshot.getValue(Integer.class))
          }
 
