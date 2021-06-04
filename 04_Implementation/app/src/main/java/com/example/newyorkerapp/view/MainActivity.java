@@ -223,9 +223,5 @@ public void mailsend(View view) {
             e.printStackTrace();
         }*/
 
-    Intent myIntent = new Intent(this, FrontPage.class);
-    startActivity(myIntent);
-
-
     }
     }
