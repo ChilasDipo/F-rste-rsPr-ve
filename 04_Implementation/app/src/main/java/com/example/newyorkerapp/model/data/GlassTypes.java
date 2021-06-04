@@ -13,10 +13,11 @@ public class GlassTypes {
 
     public double getPriceForGlass(){return priceForGlass;}
 
-    public void GlassTypes(HashMap<String, Integer> glassTypeList){
+    public GlassTypes(HashMap<String, Integer> glassTypeList){
         nameAndPrice = glassTypeList;
         glassTypes = new ArrayList<>(nameAndPrice.keySet());
         priceList = new ArrayList<>(nameAndPrice.values());
+        priceForGlass =0.0;
     }
 
     public void selected(int possison){

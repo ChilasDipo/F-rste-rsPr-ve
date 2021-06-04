@@ -20,6 +20,7 @@ public class DoorTypes {
         namesAndPrices = something;
         doorTypes =  new ArrayList<>(namesAndPrices.keySet());
         prisceList = new ArrayList<>(namesAndPrices.values());
+        priceForDoor = 0.0;
     }
 
     public void selscted(int possison){

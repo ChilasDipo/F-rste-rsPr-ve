@@ -88,6 +88,14 @@ public class MainActivityViewModel extends ViewModel {
         wall.setWetRoom(clicked);
         wallObject.setValue(wall);
     }
+    public void setHasDoor(Boolean clicked){
+        wall.setHasDoor(clicked);
+        wallObject.setValue(wall);
+    }
+    public void sethasSpecielGlass(Boolean clicked){
+        wall.setHasSpecielGlas(clicked);
+        wallObject.setValue(wall);
+    }
 
     public void setlenght(int lenght) {
         try {
@@ -115,10 +123,10 @@ public class MainActivityViewModel extends ViewModel {
 
     public String getInfoAboutWall(){
         return "Glases højde er  " +
-                wall.getFinalHeightOfGlas() + "\n" +
+                wall.getFinalHeightOfGlas() + " cm." +"\n" +
                 "glasses brede er " +
-                wall.getFinalLengthOfGlas() + "\n" +
+                wall.getFinalLengthOfGlas() +  " cm." +"\n" +
                 "Væggens pris er " +
-                wall.getPriceOfWall();
+                wall.getPriceOfWall() + " kr.";
     }
 }
