@@ -21,7 +21,7 @@ public class FrontPage extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent myIntent = new Intent(FrontPage.this, MainActivity.class);
+                Intent myIntent = new Intent(FrontPage.this, CatalogActivity.class);
                 startActivity(myIntent);
             }
         }, 3000);
