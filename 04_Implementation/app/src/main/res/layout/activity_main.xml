@@ -50,18 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="289dp"
-        android:layout_marginRight="289dp"
-        android:layout_marginBottom="292dp"
+        android:layout_marginTop="20dp"
         android:text="@string/checkBox_Main_glass_text"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/glasspinner"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/glasspinner" />
 
     <CheckBox
         android:id="@+id/door"
@@ -93,23 +86,17 @@
         android:id="@+id/doorSelection"
         android:layout_width="211dp"
         android:layout_height="20dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginLeft="78dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/door"
         app:layout_constraintTop_toBottomOf="@+id/glasSelection" />
 
     <Spinner
         android:id="@+id/doorHandleSelection"
         android:layout_width="211dp"
         android:layout_height="20dp"
-        android:layout_marginStart="118dp"
-        android:layout_marginLeft="118dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
@@ -117,8 +104,6 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonKontaktKatalog2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/door"
         app:layout_constraintTop_toBottomOf="@+id/doorSelection"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -126,15 +111,12 @@
         android:id="@+id/glasSelection"
         android:layout_width="211dp"
         android:layout_height="20dp"
-        android:layout_marginTop="85dp"
-        android:layout_marginBottom="372dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toEndOf="@+id/glass"
-        app:layout_constraintTop_toBottomOf="@+id/height"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/glasspinner" />
 
     <Spinner
         android:id="@+id/glasspinner"
