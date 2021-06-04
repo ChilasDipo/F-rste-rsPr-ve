@@ -13,8 +13,8 @@ public class Wallimpl {
 
     private Boolean wallBigEnouthForExtraFee, wallIsInAWetRoom, hasDoor, hasSpecialGlas;
 
-    SpecialGlass specialGlass = new SpecielGlass();
-    Door door = new Door();
+    //SpecialGlass specialGlass = new SpecielGlass();
+
     
 
     private ArrayList<Integer> fagliste = new ArrayList<>();
