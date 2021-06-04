@@ -7,7 +7,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -16,15 +15,12 @@ public class FireBaseDAOimpl{
    private double feeForBigGlass ;
    private double feeForWetRoom;
    private double feeForTransport;
-   private  HashMap<String, Integer> nameAndPricesForDoors = new HashMap<>();
-   private  HashMap<String, Integer> nameAndPricesForGlas = new HashMap<>();
-   private ArrayList<String> fetureList;
-   private ArrayList<Integer> priceListForDoors;
-
+   private final HashMap<String, Integer> nameAndPricesForDoors = new HashMap<>();
+   private final HashMap<String, Integer> nameAndPricesForGlas = new HashMap<>();
+   private final HashMap<String, Integer> nameAndPricesForDoorsHandel = new HashMap<>();
 
    public FireBaseDAOimpl() {
       buildHashMapsForFetureNameAndPrice();
-     // connect();
    }
 
    public HashMap<String, Integer> getNamesAndPriceForDoors(){
@@ -32,6 +28,9 @@ public class FireBaseDAOimpl{
    }
    public HashMap<String, Integer> getNamesAndPriceForGlass(){
       return nameAndPricesForGlas;
+   }
+   public HashMap<String, Integer> getNamesAndPriceForDoorHandel(){
+      return nameAndPricesForDoorsHandel;
    }
 
    public double getFeeForBigGlass(){
@@ -48,14 +47,6 @@ public class FireBaseDAOimpl{
    }
    public double getFeeForTransport(){
       return feeForTransport;
-   }
-   public ArrayList<String> getListOfDoors()  {
-      //setPriceListForDoors(new ArrayList<>(nameAndPricesForDoors.values()));
-      return new ArrayList<>(nameAndPricesForDoors.keySet());
-   }
-   public ArrayList<String> getListOfGlas()  {
-     //setPriceListOfglas(nameAndPricesForglas.values())  Måske sætte værdien i pris klassen
-     return new ArrayList<>(nameAndPricesForGlas.keySet());
    }
    void buildHashMapsForFetureNameAndPrice(){
       FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -77,7 +68,24 @@ public class FireBaseDAOimpl{
 
          }
       });
+     ref = database.getReference("/doorgrip");
+      ref.addListenerForSingleValueEvent(new ValueEventListener() {
+         @Override
+         public void onDataChange(@NonNull DataSnapshot snapshot) {
+            for ( DataSnapshot datasnapshot:snapshot.getChildren())
+            {
+               String key = datasnapshot.getKey();
+               Integer value=datasnapshot.getValue(Integer.class);
+               nameAndPricesForDoorsHandel.put(key,value);
+               System.out.println("something is ha");
+            }
+         }
 
+         @Override
+         public void onCancelled(@NonNull DatabaseError error) {
+
+         }
+      });
       //Bygger hashmap for alle typer specielglas med deres navn og pris
       ref = database.getReference("/glas");
       ref.addListenerForSingleValueEvent(new ValueEventListener() {

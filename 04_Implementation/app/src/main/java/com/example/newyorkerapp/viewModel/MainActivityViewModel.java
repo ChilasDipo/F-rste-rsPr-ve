@@ -18,7 +18,7 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
 
-     ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
+     ArrayList<Wallimpl> listOfWalls = new ArrayList<>();
 
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
@@ -69,11 +69,14 @@ public class MainActivityViewModel extends ViewModel {
 
     }
     public ArrayList<String> getListOfDoors(){
-        return new ArrayList<String>(wall.getListOfDoors());
+        return new ArrayList<>(wall.getListOfDoors());
 
     }
     public ArrayList<String> getListOfGlas(){
-        return new ArrayList<String>(wall.getListOfGlass());
+        return new ArrayList<>(wall.getListOfGlass());
+    }
+    public ArrayList<String> getListOfDoorgrips(){
+        return new ArrayList<>(wall.getListOfDoorGrips());
     }
 
     public void selectDoor(int position){
@@ -117,9 +120,8 @@ public class MainActivityViewModel extends ViewModel {
     public ArrayList<Integer> getAdapterForFag(){
         return wall.getFagliste();
     }
-    public ArrayList<Integer> getAdapterForGlas(){
-        return wall.getGlasliste();
-    }
+    public ArrayList<Integer> getAdapterForGlas(){ return wall.getGlasliste(); }
+
 
     public String getInfoAboutWall(){
         return "Glases højde er  " +
