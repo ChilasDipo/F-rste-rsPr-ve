@@ -94,6 +94,7 @@ void  initializeOnClickListeners(){
                 ArrayAdapter<String> adapterForDoorGrip = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfDoorgrips());
                 adapterForDoorGrip.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
                 doorHandleSelection.setAdapter(adapterForDoorGrip);
+                doorHandleSelection.setSelection(0);
                 doorHandleSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
