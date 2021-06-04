@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.newyorkerapp.model.data.ListOfWalls;
 import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
@@ -17,10 +18,16 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
 
+    private MutableLiveData<ListOfWalls> listOfWallsClass;
+
     ArrayList<Wallimpl> listOfWalls = new ArrayList<Wallimpl>();
 
 
+    private static MutableLiveData<ListOfWalls> ListOfWalls;
 
+    public static LiveData getLivedata(){
+        return ListOfWalls;
+    }
 
 
     public MainActivityViewModel() {
@@ -32,6 +39,9 @@ public class MainActivityViewModel extends ViewModel {
         addWall();
         addWall();
         selectWall(0);
+
+        listOfWallsClass.getValue();
+
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
     public LiveData<Wallimpl> getWall() {
