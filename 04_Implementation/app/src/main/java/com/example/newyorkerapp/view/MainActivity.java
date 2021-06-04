@@ -161,7 +161,7 @@ void  initializeOnClickListeners(){
     buttonKontaktKatalog.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+            Intent myIntent = new Intent(MainActivity.this, CatalogActivity.class);
             startActivity(myIntent);
         }
     });
