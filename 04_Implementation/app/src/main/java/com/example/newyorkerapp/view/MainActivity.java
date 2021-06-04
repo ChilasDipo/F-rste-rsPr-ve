@@ -76,7 +76,7 @@ void  initializeOnClickListeners(){
                 doorSelection.setVisibility(View.VISIBLE);
                 doorHandleSelection.setVisibility((View.VISIBLE));
                 ArrayList<String> doorlist = mMainActivityViewModel.getListOfDoors();
-                ArrayAdapter<String> adapterForDoors = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, doorlist);
+                ArrayAdapter<String> adapterForDoors = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, doorlist);
                 adapterForDoors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
                 doorSelection.setAdapter(adapterForDoors);
                 doorSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,7 +91,7 @@ void  initializeOnClickListeners(){
                     }
                 });
 
-                ArrayAdapter<String> adapterForDoorGrip = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfDoorgrips());
+                ArrayAdapter<String> adapterForDoorGrip = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfDoorgrips());
                 adapterForDoorGrip.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
                 doorHandleSelection.setAdapter(adapterForDoorGrip);
                 doorHandleSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -121,7 +121,7 @@ void  initializeOnClickListeners(){
             if (glassCheckBox.isChecked()){
                 glasSelection.setVisibility(View.VISIBLE);
 
-                ArrayAdapter<String> adapterForGlas = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfGlas());
+                ArrayAdapter<String> adapterForGlas = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfGlas());
                 adapterForGlas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
                 glasSelection.setAdapter(adapterForGlas);
                 glasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -178,7 +178,7 @@ void  initializeOnClickListeners(){
         glassCheckBox.setVisibility(View.VISIBLE);
         wetRoomCheckBox.setVisibility(View.VISIBLE);
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getAdapterForFag());
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getAdapterForFag());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
         amountOfFagSelection.setAdapter(adapter);
         amountOfFagSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -193,7 +193,7 @@ void  initializeOnClickListeners(){
             }
         });
             ArrayList<Integer> glasListe = mMainActivityViewModel.getAdapterForGlas();
-            ArrayAdapter<Integer> adapter2 = new ArrayAdapter<Integer>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glasListe);
+            ArrayAdapter<Integer> adapter2 = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, glasListe);
             adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             amountOfGlasSelection.setAdapter(adapter2);
             amountOfGlasSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -7,7 +7,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -19,13 +18,9 @@ public class FireBaseDAOimpl{
    private final HashMap<String, Integer> nameAndPricesForDoors = new HashMap<>();
    private final HashMap<String, Integer> nameAndPricesForGlas = new HashMap<>();
    private final HashMap<String, Integer> nameAndPricesForDoorsHandel = new HashMap<>();
-   private ArrayList<String> fetureList;
-   private ArrayList<Integer> priceListForDoors;
-
 
    public FireBaseDAOimpl() {
       buildHashMapsForFetureNameAndPrice();
-     // connect();
    }
 
    public HashMap<String, Integer> getNamesAndPriceForDoors(){
