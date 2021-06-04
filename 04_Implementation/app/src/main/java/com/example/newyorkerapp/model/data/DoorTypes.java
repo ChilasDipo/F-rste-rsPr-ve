@@ -11,7 +11,6 @@ public class DoorTypes {
     private double priceForDoor;
     private HashMap<String, Integer> namesAndPrices;
 
-
     public double getPriceForDoor() {
         return priceForDoor;
     }
