@@ -13,12 +13,12 @@
     <string name="button_Catalog_contact_text">kontakt os</string>
     <string name="button_Catalog_catalog_text">Katalog</string>
     <string name="button_Catalog_measure_text">mål Selv</string>
-    <string name="editText_Main_height_hint">Højde</string>
+    <string name="editText_Main_height_hint">Højde i cm</string>
     <string name="editText_Main_bredde_hint">Brede</string>
     <string name="button_Main_send_text">Beregn</string>
     <string name="button_Main_sendnow_text">Send now</string>
     <string name="checkBox_Main_glass_text">Special Glas</string>
     <string name="checkBox_Main_door_text">Dør</string>
-    <string name="editText_Main_width_hint">Bredde</string>
+    <string name="editText_Main_width_hint">Bredde i cm</string>
     <string name="checkBox_Main_wetroom_text">Vådrum</string>
 </resources>

@@ -1,12 +1,13 @@
 package com.example.newyorkerapp.model.data;
+import com.example.newyorkerapp.model.exceptions.HeightTooBig;
+import com.example.newyorkerapp.model.exceptions.HeightTooSmall;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
 import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
-import com.google.api.DocumentationOrBuilder;
 
 import java.util.ArrayList;
 
 
-public class Wallimpl {
+public class Wallimpl implements Wall {
 
    private int heightOfTheWall, lengthOfTheWall, amountOfFag, amountOfGlas, finalLengthOfGlas, finalHeightOfGlas;
 
@@ -31,53 +32,62 @@ public class Wallimpl {
         glassTypes=null;
 
     }
+    @Override
     public void setWetRoom(Boolean clicked){
             wetRoom = clicked;
     }
+    @Override
     public void setHasDoor(Boolean clicked){ hasDoor = clicked;
       if (doorTypes==null){
           doorTypes = new DoorTypes(fireBaseDAOimpl.getNamesAndPriceForDoors());}
       }
+    @Override
     public void setHasSpecielGlas(Boolean clicked){ hasSpecielGlas = clicked;
         if (glassTypes==null){
             glassTypes = new GlassTypes(fireBaseDAOimpl.getNamesAndPriceForGlass());}
     }
-
+    @Override
     public void selectDoor(int position){
         doorTypes.selscted(position);
     }
+    @Override
     public void selectGlass(int position){
         glassTypes.selected(position);
     }
-
+    @Override
     public void setFinalHeightOfGlas(int finalHeightOfGlas) {
         this.finalHeightOfGlas = heightOfGlassliste.get(finalHeightOfGlas);
         amountOfGlas = glasliste.get(finalHeightOfGlas);
     }
-
+    @Override
     public void setFinalLengthOfGlas(int finalLengthOfGlas) {
         this.finalLengthOfGlas = lenthOfFagList.get(finalLengthOfGlas);
         amountOfFag = fagliste.get(finalLengthOfGlas);
     }
-
+    @Override
     public int getFinalHeightOfGlas() {
         return finalHeightOfGlas;
     }
-
+    @Override
     public int getFinalLengthOfGlas() {
         return finalLengthOfGlas;
     }
 
 
     //TODO Skal måske sættes sammen en en metode som sætter både height and length(Hvis det gøres skal den først kaldes fra UI når begge værdier er indputtet)
-    public void setHeightOfTheWall(int heightOfTheWall) throws InputMangler {
+    @Override
+    public void setHeightOfTheWall(int heightOfTheWall) throws InputMangler, HeightTooSmall, HeightTooBig {
         if (heightOfTheWall == 0) throw new InputMangler(){};
+        if (heightOfTheWall < 15) throw new HeightTooSmall(){};
+        if (heightOfTheWall > 250) throw new HeightTooBig(){};
         this.heightOfTheWall = heightOfTheWall;
         calculateAmountOfGlas();
     }
+    @Override
     public ArrayList<Integer> getGlasliste() {
         return glasliste;
     }
+
     private void calculateAmountOfGlas() {
         glasliste.clear();
         heightOfGlassliste.clear();
@@ -91,12 +101,13 @@ public class Wallimpl {
         System.out.println("glas længder " + heightOfGlassliste.toString());
     }
 
-
+    @Override
     public void setLengthOfTheWall(int lengthOfTheWall) throws InputMangler {
         if (lengthOfTheWall == 0) throw new InputMangler(){};
         this.lengthOfTheWall = lengthOfTheWall;
         calculateAmountOfFag();
     }
+    @Override
     public ArrayList<Integer> getFagliste() { return fagliste; }
     private void calculateAmountOfFag() {
         fagliste.clear();
@@ -116,6 +127,7 @@ public class Wallimpl {
         }
         else return false;
     }
+    @Override
     public double getPriceOfWall() {
         int amountOfGlassInWall = amountOfFag * amountOfGlas;
 
@@ -130,13 +142,15 @@ public class Wallimpl {
 
         return (amountOfGlassInWall) * pricePerGlass + extraPriceFordoor + fireBaseDAOimpl.getFeeForTransport();
     }
-
+    @Override
     public ArrayList<String> getListOfDoors() {
         return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForDoors().keySet());
     }
+    @Override
     public ArrayList<String> getListOfGlass() {
         return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForGlass().keySet());
     }
+    @Override
     public ArrayList<String> getListOfDoorGrips() {
         return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForDoorHandel().keySet());
     }

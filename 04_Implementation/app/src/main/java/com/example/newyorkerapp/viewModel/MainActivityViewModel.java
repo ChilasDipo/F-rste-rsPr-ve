@@ -4,14 +4,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.newyorkerapp.model.data.ListOfWalls;
 import com.example.newyorkerapp.model.data.Wallimpl;
+import com.example.newyorkerapp.model.exceptions.HeightTooBig;
+import com.example.newyorkerapp.model.exceptions.HeightTooSmall;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
-import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivityViewModel extends ViewModel {
 
@@ -23,14 +21,7 @@ public class MainActivityViewModel extends ViewModel {
     public MainActivityViewModel() {
         wallObject = new MutableLiveData<>();
         addWall();
-        addWall();
-        addWall();
-        addWall();
-        addWall();
         selectWall(0);
-
-
-
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
     public LiveData<Wallimpl> getWall() {
@@ -40,7 +31,7 @@ public class MainActivityViewModel extends ViewModel {
         return wallObject;
     }
 
-    public void selectWall(int i){
+     void selectWall(int i){
         wall = listOfWalls.get(i);
         wallObject.setValue(wall);
     }
@@ -48,25 +39,19 @@ public class MainActivityViewModel extends ViewModel {
     void addWall(){
         listOfWalls.add(new Wallimpl());
     }
-
-    public int getHeight(){
-       return wall.getFinalHeightOfGlas();
-    }
-    public int getLength(){
-        return wall.getFinalLengthOfGlas();
-    }
-    public double getPrice(){
-        return wall.getPriceOfWall();
-    }
-
     public void setHeight(int height) {
+
         try {
             wall.setHeightOfTheWall(height);
         } catch (InputMangler inputMangler) {
             inputMangler.printStackTrace();
+        } catch (HeightTooSmall heightTooSmall) {
+            heightTooSmall.printStackTrace();
+        } catch (HeightTooBig heightTooBig) {
+            heightTooBig.printStackTrace();
         }
-        wallObject.setValue(wall);
 
+        wallObject.setValue(wall);
     }
     public ArrayList<String> getListOfDoors(){
         return new ArrayList<>(wall.getListOfDoors());

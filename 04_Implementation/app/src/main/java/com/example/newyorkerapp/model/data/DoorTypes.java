@@ -7,7 +7,7 @@ public class DoorTypes {
 
     final ArrayList<String> doorTypes;
     final ArrayList<Integer> prisceList;
-    String nameOfDoor;
+    private String nameOfDoor;
     private double priceForDoor;
     private HashMap<String, Integer> namesAndPrices;
 

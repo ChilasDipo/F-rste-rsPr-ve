@@ -7,6 +7,17 @@
     android:background="#FFFFFF"
     tools:context=".view.MainActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Antal fag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toEndOf="@+id/fagspinner"
+        app:layout_constraintTop_toBottomOf="@+id/height" />
+
     <Button
         android:id="@+id/buttonKontaktMeasure2"
         android:layout_width="0dp"
@@ -169,6 +180,7 @@
         android:layout_height="wrap_content"
         android:onClick="send"
         android:text="@string/button_Main_send_text"
+        app:backgroundTint="#BB8C54"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -206,14 +218,15 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="mailsend"
         android:text="@string/button_Main_sendnow_text"
+        app:backgroundTint="#BB8C54"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toEndOf="@+id/send"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.912"
-        android:onClick="mailsend"/>
+        app:layout_constraintVertical_bias="0.912" />
 
     <Spinner
         android:id="@+id/fagspinner"
@@ -227,5 +240,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/height"
         app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="11dp"
+        android:text="Antal glas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/glasspinner"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

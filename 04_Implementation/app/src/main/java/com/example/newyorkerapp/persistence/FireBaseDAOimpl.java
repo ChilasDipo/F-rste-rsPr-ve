@@ -42,15 +42,14 @@ public class FireBaseDAOimpl{
    }
 
    public double getPriceOfGlass(){
-      System.out.println("Price is " + priceOfGlass);
       return priceOfGlass;
    }
    public double getFeeForTransport(){
       return feeForTransport;
    }
    void buildHashMapsForFetureNameAndPrice(){
-      FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");
       //Bygger hashmap for alle typer døre med deres navn og pris
+      FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");
       DatabaseReference  ref = database.getReference("/door");
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
@@ -104,6 +103,7 @@ public class FireBaseDAOimpl{
 
          }
       });
+
       ref = database.getReference("/pris/glas");
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
@@ -116,7 +116,7 @@ public class FireBaseDAOimpl{
          public void onCancelled(@NonNull DatabaseError error) {
          }
       });
-      ref = database.getReference("/stortfelt");
+      ref = database.getReference("/pris/stortfelt");
       ref.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot snapshot) {

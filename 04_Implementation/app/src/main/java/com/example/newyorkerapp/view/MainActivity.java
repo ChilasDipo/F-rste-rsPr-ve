@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,11 +15,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.newyorkerapp.R;
 import com.example.newyorkerapp.viewModel.MainActivityViewModel;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+import uk.co.jakebreen.sendgridandroid.SendGrid;
+import uk.co.jakebreen.sendgridandroid.SendGridMail;
+import uk.co.jakebreen.sendgridandroid.SendGridResponse;
+import uk.co.jakebreen.sendgridandroid.SendTask;
 
 public class MainActivity extends AppCompatActivity {
     private EditText width, height;
@@ -210,7 +216,7 @@ void  initializeOnClickListeners(){
             });
 }
 public void mailsend(View view) {
-
+/*
         //This metod does not work on emulator
     String[] addresses = {"chil0041@edu.easj.dk"};
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
@@ -221,25 +227,27 @@ public void mailsend(View view) {
         emailIntent.putExtra(Intent.EXTRA_TEXT, mMainActivityViewModel.getInfoAboutWall());
     if (emailIntent.resolveActivity(getPackageManager()) != null) {
         startActivity(Intent.createChooser(emailIntent, "Send feedback"));
-    }
+    }*/
 
-    /* sending gennem API
+    // sending gennem API
         SendGrid sendGrid = SendGrid.create("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");
         SendGridMail mail = new SendGridMail();
         mail.addRecipient("chil0041@edu.easj.dk", "Chilas");
         mail.setFrom("chil0041@edu.easj.dk", "Chilas");
         mail.setSubject("Hej fra sendgrid");
-        mail.setContent("Hej, det virker nu. Måske.");
+        mail.setContent("Hej, det virker nu. Måske." + mMainActivityViewModel.getInfoAboutWall());
         SendTask task = new SendTask(sendGrid, mail);
         try {
             SendGridResponse response = task.execute().get();
-            System.out.println(response.getErrorMessage());
-            System.out.println(response.isSuccessful());
+           // System.out.println(response.getErrorMessage());
+            //System.out.println(response.isSuccessful());
+            Toast toast = Toast.makeText(MainActivity.this,"Email er blevet sendt", Toast.LENGTH_SHORT);
+            toast.show();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
     }
