@@ -10,7 +10,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 
-public class FireBaseDAOimpl{
+public class FireBaseDAOimpl implements DAO{
    private double priceOfGlass;
    private double feeForBigGlass ;
    private double feeForWetRoom;
@@ -22,31 +22,37 @@ public class FireBaseDAOimpl{
    public FireBaseDAOimpl() {
       buildHashMapsForFetureNameAndPrice();
    }
-
+   @Override
    public HashMap<String, Integer> getNamesAndPriceForDoors(){
       return nameAndPricesForDoors;
    }
+   @Override
    public HashMap<String, Integer> getNamesAndPriceForGlass(){
       return nameAndPricesForGlas;
    }
+   @Override
    public HashMap<String, Integer> getNamesAndPriceForDoorHandel(){
       return nameAndPricesForDoorsHandel;
    }
-
+   @Override
    public double getFeeForBigGlass(){
       return feeForBigGlass;
    }
-
+   @Override
    public double getFeeForWetRoom(){
       return feeForWetRoom;
    }
-
+   @Override
    public double getPriceOfGlass(){
       return priceOfGlass;
    }
+   @Override
    public double getFeeForTransport(){
       return feeForTransport;
    }
+
+   //Metoder som byugger HashMaps til Døre, glas, DørHåndtag og hente enkle værdier ned og sætter sætte dem så de er klar til at bleve gettet.
+   //Denne metode bliver kaldt i konstruktor så den har tid til at hente alle værdier ned før de skal bruges så der ikke kommer en nulpointerexception og værdien er blevet sat til det rigte før den bliver gettet
    void buildHashMapsForFetureNameAndPrice(){
       //Bygger hashmap for alle typer døre med deres navn og pris
       FirebaseDatabase database = FirebaseDatabase.getInstance("https://testing-cf64a-default-rtdb.europe-west1.firebasedatabase.app/");

@@ -30,24 +30,64 @@ public interface Wall {
 
     double getPriceOfWall();
 
+    /**
+     * @Metode som VIewModellel kander når brugeren har valgt en dør fra drop downen
+     */
      void selectDoor(int position);
+
+    /**
+     * @param position
+     */
      void selectGlass(int position);
+
+    /**
+     * @param clicked Sætter Boleanen WetRoom til true hvis checkboxen i Ui er klikket på (Hvis ViewMOdellen kander metoden som ssker på checkbox click)
+     */
      void setWetRoom(Boolean clicked);
+
+    /**
+     * @param clicked Sætter Boleanen HasDoor til true hvis checkboxen i Ui er klikket på (Hvis ViewMOdellen kander metoden som ssker på checkbox click)
+     */
      void setHasDoor(Boolean clicked);
+
+    /**
+     * @param clicked Sætter Boleanen SpecielGlas til true hvis checkboxen i Ui er klikket på (Hvis ViewMOdellen kander metoden som ssker på checkbox click)
+     */
      void setHasSpecielGlas(Boolean clicked);
 
+    /**
+     * @param finalHeightOfGlas
+     */
     void setFinalHeightOfGlas(int finalHeightOfGlas);
 
+    /**
+     * @param finalLengthOfGlas
+     */
     void setFinalLengthOfGlas(int finalLengthOfGlas);
 
+    /**
+     * @return
+     */
     int getFinalHeightOfGlas();
 
+    /**
+     * @return
+     */
     int getFinalLengthOfGlas();
 
+    /**
+     * @return Et ArrayList med navne på alle vores døre
+     */
     ArrayList<String> getListOfDoors();
 
+    /**
+     * @return Et ArrayList med navne på alle vores specielglas
+     */
      ArrayList<String> getListOfGlass();
 
+    /**
+     * @return Et ArrayList med navne på alle vores DoorGrips
+     */
      ArrayList<String> getListOfDoorGrips();
 
 
