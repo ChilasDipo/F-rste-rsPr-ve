@@ -15,30 +15,15 @@ public class MainActivityViewModel extends ViewModel {
 
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
-
-     ArrayList<Wallimpl> listOfWalls = new ArrayList<>();
-
-    public MainActivityViewModel() {
-        wallObject = new MutableLiveData<>();
-        addWall();
-        selectWall(0);
-    }
-    //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
     public LiveData<Wallimpl> getWall() {
         if (wallObject == null) {
             wallObject = new MutableLiveData<>();
+            wall = new Wallimpl();
+            wallObject.setValue(wall);
         }
         return wallObject;
     }
-
-     void selectWall(int i){
-        wall = listOfWalls.get(i);
-        wallObject.setValue(wall);
-    }
-        // disse 2 funktioner kan ændres så man kan vælge et væg obejct
-    void addWall(){
-        listOfWalls.add(new Wallimpl());
-    }
+    //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
     public void setHeight(int height) {
 
         try {

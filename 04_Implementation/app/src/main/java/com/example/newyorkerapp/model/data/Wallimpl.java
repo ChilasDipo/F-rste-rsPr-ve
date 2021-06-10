@@ -30,7 +30,6 @@ public class Wallimpl implements Wall {
         hasSpecielGlas=false;
         doorTypes=null;
         glassTypes=null;
-
     }
     @Override
     public void setWetRoom(Boolean clicked){
@@ -78,7 +77,7 @@ public class Wallimpl implements Wall {
     @Override
     public void setHeightOfTheWall(int heightOfTheWall) throws InputMangler, HeightTooSmall, HeightTooBig {
         if (heightOfTheWall == 0) throw new InputMangler(){};
-        if (heightOfTheWall < 15) throw new HeightTooSmall(){};
+        if (heightOfTheWall < 10) throw new HeightTooSmall(){};
         if (heightOfTheWall > 250) throw new HeightTooBig(){};
         this.heightOfTheWall = heightOfTheWall;
         calculateAmountOfGlas();
@@ -91,7 +90,7 @@ public class Wallimpl implements Wall {
     private void calculateAmountOfGlas() {
         glasliste.clear();
         heightOfGlassliste.clear();
-        for (int i = 15; i < heightOfTheWall; i++) {
+        for (int i = 10; i < heightOfTheWall; i++) {
             if (heightOfTheWall % i == 0) {
                 glasliste.add(heightOfTheWall / i);
                 heightOfGlassliste.add(i);
@@ -112,7 +111,7 @@ public class Wallimpl implements Wall {
     private void calculateAmountOfFag() {
         fagliste.clear();
         lenthOfFagList.clear();
-        for (int i = 15; i < lengthOfTheWall; i++) {
+        for (int i = 10; i < lengthOfTheWall; i++) {
             if (lengthOfTheWall % i == 0) {
                 fagliste.add(lengthOfTheWall / i);
                 lenthOfFagList.add(i);
