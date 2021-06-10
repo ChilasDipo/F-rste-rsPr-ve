@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewYorkerApp">
         <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.CatalogActivity" />
+        <activity android:name=".view.ContactActivity" />
         <activity android:name=".view.FrontPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

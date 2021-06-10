@@ -1,8 +1,17 @@
 package com.example.newyorkerapp.persistence;
 
+import java.util.HashMap;
+
 public interface DAO {
 
-    public double getPrice();
+     HashMap<String, Integer> getNamesAndPriceForDoors();
+     HashMap<String, Integer> getNamesAndPriceForGlass();
+     HashMap<String, Integer> getNamesAndPriceForDoorHandel();
 
-   // void setPrice(ValContainer valContainer);
+     double getFeeForBigGlass();
+
+     double getFeeForWetRoom();
+
+     double getPriceOfGlass();
+     double getFeeForTransport();
 }
