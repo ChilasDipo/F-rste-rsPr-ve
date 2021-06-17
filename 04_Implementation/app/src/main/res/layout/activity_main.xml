@@ -210,20 +210,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="mailsend"
-        android:text="@string/button_Main_sendnow_text"
-        app:backgroundTint="#BB8C54"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toEndOf="@+id/send"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.912" />
-
     <Spinner
         android:id="@+id/fagspinner"
         android:layout_width="211dp"

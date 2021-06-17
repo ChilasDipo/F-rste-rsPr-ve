@@ -13,17 +13,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.example.newyorkerapp.R;
-import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 import com.example.newyorkerapp.viewModel.MainActivityViewModel;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-
-import uk.co.jakebreen.sendgridandroid.SendGrid;
-import uk.co.jakebreen.sendgridandroid.SendGridMail;
-import uk.co.jakebreen.sendgridandroid.SendGridResponse;
-import uk.co.jakebreen.sendgridandroid.SendTask;
 
 public class MainActivity extends AppCompatActivity {
     private EditText width, height;
@@ -210,11 +202,4 @@ void  initializeOnClickListeners(){
         System.out.println("Gustav Gustav");
        mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(width.getText()))));
 }
-public void mailsend(View view) {
-
-
-
-    /* */
-
-    }
     }

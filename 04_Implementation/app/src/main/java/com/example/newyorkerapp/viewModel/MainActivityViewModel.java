@@ -9,9 +9,7 @@ import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.model.exceptions.HeightTooBig;
 import com.example.newyorkerapp.model.exceptions.HeightTooSmall;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
-import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class MainActivityViewModel extends ViewModel {

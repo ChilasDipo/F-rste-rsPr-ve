@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Wallimpl implements Wall {
 
    private int heightOfTheWall, lengthOfTheWall, amountOfFag, amountOfGlas, finalLengthOfGlas, finalHeightOfGlas;
-
+    private String name;
     private Boolean  wetRoom, hasDoor,hasSpecielGlas;
 
     DoorTypes doorTypes;
@@ -23,8 +23,13 @@ public class Wallimpl implements Wall {
     public Wallimpl() {
     }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getHeightOfTheWall() {
         return heightOfTheWall;
