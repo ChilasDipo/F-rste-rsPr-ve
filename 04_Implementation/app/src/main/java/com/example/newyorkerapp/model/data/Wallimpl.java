@@ -13,7 +13,6 @@ public class Wallimpl implements Wall {
 
     private Boolean  wetRoom, hasDoor,hasSpecielGlas;
 
-    FireBaseDAOimpl fireBaseDAOimpl;
     DoorTypes doorTypes;
     GlassTypes glassTypes;
     private final ArrayList<Integer> fagliste = new ArrayList<>();
@@ -22,28 +21,43 @@ public class Wallimpl implements Wall {
     private final ArrayList<Integer> heightOfGlassliste = new ArrayList<>();
 
     public Wallimpl() {
-        heightOfTheWall = 0;
-        lengthOfTheWall = 0;
-        fireBaseDAOimpl = new FireBaseDAOimpl();
+    }
+
+
+
+
+    public int getHeightOfTheWall() {
+        return heightOfTheWall;
+    }
+
+    public int getLengthOfTheWall() {
+        return lengthOfTheWall;
+    }
+
+    public Wallimpl(int length, int height, boolean door) throws HeightTooSmall, InputMangler, HeightTooBig {
         wetRoom=false;
-        hasDoor= false;
         hasSpecielGlas=false;
-        doorTypes=null;
-        glassTypes=null;
+
+        doorTypes = new DoorTypes(FireBaseDAOimpl.getNamesAndPriceForDoors());
+        glassTypes= new GlassTypes(FireBaseDAOimpl.getNamesAndPriceForGlass());;
+
+       setHeightOfTheWall(height);
+        setLengthOfTheWall(length);
+        setHasDoor(door);
+
     }
     @Override
     public void setWetRoom(Boolean clicked){
             wetRoom = clicked;
     }
     @Override
-    public void setHasDoor(Boolean clicked){ hasDoor = clicked;
-      if (doorTypes==null){
-          doorTypes = new DoorTypes(fireBaseDAOimpl.getNamesAndPriceForDoors());}
+    public void setHasDoor(Boolean clicked){ hasDoor = clicked; }
+
+      public boolean getHasDoor(){
+        return hasDoor;
       }
     @Override
     public void setHasSpecielGlas(Boolean clicked){ hasSpecielGlas = clicked;
-        if (glassTypes==null){
-            glassTypes = new GlassTypes(fireBaseDAOimpl.getNamesAndPriceForGlass());}
     }
     @Override
     public void selectDoor(int position){
@@ -131,26 +145,24 @@ public class Wallimpl implements Wall {
         int amountOfGlassInWall = amountOfFag * amountOfGlas;
 
         //setter prisen for glas og lægger tillæget til for hver condition som er true
-        double pricePerGlass = fireBaseDAOimpl.getPriceOfGlass();
+        double pricePerGlass = FireBaseDAOimpl.getPriceOfGlass();
         double extraPriceFordoor = 0;
-        if (calculateWallBigEnouthForExtraFee()){ pricePerGlass += fireBaseDAOimpl.getFeeForBigGlass(); }
-        if (wetRoom){ pricePerGlass += fireBaseDAOimpl.getFeeForWetRoom();}
+        if (calculateWallBigEnouthForExtraFee()){ pricePerGlass += FireBaseDAOimpl.getFeeForBigGlass(); }
+        if (wetRoom){ pricePerGlass += FireBaseDAOimpl.getFeeForWetRoom();}
          if (hasDoor){  extraPriceFordoor = doorTypes.getPriceForDoor();}
         if (hasSpecielGlas){ pricePerGlass += glassTypes.getPriceForGlass();}
-
-
-        return (amountOfGlassInWall) * pricePerGlass + extraPriceFordoor + fireBaseDAOimpl.getFeeForTransport();
+        return (amountOfGlassInWall) * pricePerGlass + extraPriceFordoor + FireBaseDAOimpl.getFeeForTransport();
     }
     @Override
     public ArrayList<String> getListOfDoors() {
-        return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForDoors().keySet());
+        return new ArrayList<>(FireBaseDAOimpl.getNamesAndPriceForDoors().keySet());
     }
     @Override
     public ArrayList<String> getListOfGlass() {
-        return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForGlass().keySet());
+        return new ArrayList<>(FireBaseDAOimpl.getNamesAndPriceForGlass().keySet());
     }
     @Override
     public ArrayList<String> getListOfDoorGrips() {
-        return new ArrayList<>(fireBaseDAOimpl.getNamesAndPriceForDoorHandel().keySet());
+        return new ArrayList<>(FireBaseDAOimpl.getNamesAndPriceForDoorHandel().keySet());
     }
 }

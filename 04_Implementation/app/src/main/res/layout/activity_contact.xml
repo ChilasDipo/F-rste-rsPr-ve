@@ -118,10 +118,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/storeDropDown" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/storeDropDown"
         android:layout_width="331dp"
         android:layout_height="24dp"
         android:layout_marginStart="41dp"

@@ -3,19 +3,32 @@ package com.example.newyorkerapp.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newyorkerapp.R;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+import uk.co.jakebreen.sendgridandroid.SendGrid;
+import uk.co.jakebreen.sendgridandroid.SendGridMail;
+import uk.co.jakebreen.sendgridandroid.SendGridResponse;
+import uk.co.jakebreen.sendgridandroid.SendTask;
 
 public class ContactActivity extends AppCompatActivity {
 
     private String name, address, message, email;
     private int phonenumber;
 
-    Button buttonKontaktMeasure, buttonKontaktKatalog;
+    Button buttonKontaktMeasure, buttonKontaktKatalog, buttonKontaktSend;
+    Spinner storeDropDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +38,8 @@ public class ContactActivity extends AppCompatActivity {
 
         buttonKontaktKatalog = findViewById(R.id.buttonKontaktKatalog);
         buttonKontaktMeasure = findViewById(R.id.buttonKontaktMeasure);
+        buttonKontaktSend = findViewById(R.id.buttonKontaktSend);
+        storeDropDown = findViewById(R.id.storeDropDown);
         initializeOnClickListeners();
     }
 
@@ -97,8 +112,52 @@ public class ContactActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+        buttonKontaktSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMail();
+            }
+        });
+
+        ArrayList<String> storeList = new ArrayList<>();
+        storeList.add("Store1");
+        storeList.add("Store2");
+        storeList.add("Store3");
+        storeList.add("Store4");
+    ArrayAdapter<String> adapterForStore = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, storeList);
+        adapterForStore.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
+        storeDropDown.setAdapter(adapterForStore);
+        storeDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            System.out.println(storeList.get(position));
+        }
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    });
+
+}
+
+private void sendMail(){
+    SendGrid sendGrid = SendGrid.create("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");
+    SendGridMail mail = new SendGridMail();
+    mail.addRecipient("chil0041@edu.easj.dk", "Chilas");
+    mail.setFrom("chil0041@edu.easj.dk", "Chilas");
+    mail.setSubject("Hej fra sendgrid");
+    mail.setContent("Hej, det virker nu. Måske.");
+    SendTask task = new SendTask(sendGrid, mail);
+    try {
+        SendGridResponse response = task.execute().get();
+        // System.out.println(response.getErrorMessage());
+        //System.out.println(response.isSuccessful());
+        Toast toast = Toast.makeText(ContactActivity.this,"Email er blevet sendt", Toast.LENGTH_SHORT);
+        toast.show();
+    } catch (ExecutionException e) {
+        e.printStackTrace();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
-
-
+}
 
 }

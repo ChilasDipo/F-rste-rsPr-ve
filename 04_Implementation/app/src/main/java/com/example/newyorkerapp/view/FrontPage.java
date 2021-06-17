@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.example.newyorkerapp.R;
+import com.example.newyorkerapp.model.data.ListOfWallsFromCatalog;
+import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
 public class FrontPage extends AppCompatActivity {
 
@@ -16,6 +18,11 @@ public class FrontPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_front_page);
+
+
+        //Very bad Practice need to find a better place to call it
+        FireBaseDAOimpl.buildHashMapsForFetureNameAndPrice();
+        ListOfWallsFromCatalog.buildListOfWallsFromCatalog();
 
         //TODO read up on this thing
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {

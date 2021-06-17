@@ -63,7 +63,6 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="20dp"
         android:text="@string/checkBox_Main_glass_text"
-        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/glasspinner" />
 
@@ -75,7 +74,6 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="10dp"
         android:text="@string/checkBox_Main_door_text"
-        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wetroom" />
 
@@ -87,7 +85,6 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="10dp"
         android:text="@string/checkBox_Main_wetroom_text"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +131,6 @@
         android:layout_width="211dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
@@ -178,7 +174,7 @@
         android:id="@+id/send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="send"
+        android:onClick="changeHeightAndLenght"
         android:text="@string/button_Main_send_text"
         app:backgroundTint="#BB8C54"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -233,7 +229,6 @@
         android:layout_width="211dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"

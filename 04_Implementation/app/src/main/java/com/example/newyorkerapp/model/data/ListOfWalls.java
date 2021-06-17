@@ -17,9 +17,6 @@ public class ListOfWalls {
         return content;
     }
 
-    public static void addToList(){
-        content.add(new Wallimpl());
-    }
 
 
 }

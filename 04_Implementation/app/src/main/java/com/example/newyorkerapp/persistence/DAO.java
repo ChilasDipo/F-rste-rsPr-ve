@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public interface DAO {
 
-     HashMap<String, Integer> getNamesAndPriceForDoors();
+   //  HashMap<String, Integer> getNamesAndPriceForDoors();
      HashMap<String, Integer> getNamesAndPriceForGlass();
      HashMap<String, Integer> getNamesAndPriceForDoorHandel();
 
