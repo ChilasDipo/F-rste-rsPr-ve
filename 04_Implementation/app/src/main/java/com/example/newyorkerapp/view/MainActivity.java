@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox glassCheckBox, wetRoomCheckBox, doorCheckBox;
 
 
-     private Button buttonKontaktKontaktOs,buttonKontaktKatalog;
+     private Button buttonKontaktKontaktOs,buttonKontaktKatalog,sendToContact;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonKontaktKontaktOs = findViewById(R.id.buttonKontaktKontaktOs2);
         buttonKontaktKatalog = findViewById(R.id.buttonKontaktKatalog2);
+        sendToContact = findViewById(R.id.sendToContact);
 
         fag = (TextView) findViewById(R.id.amountOfFag);
 
@@ -71,6 +72,15 @@ void  initializeOnClickListeners(){
         @Override
         public void onClick(View v) {
             mMainActivityViewModel.setWetRoom(wetRoomCheckBox.isChecked());
+        }
+    });
+
+    sendToContact.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent myIntent = new Intent(MainActivity.this, ContactActivity.class);
+            startActivity(myIntent);
+
         }
     });
 
