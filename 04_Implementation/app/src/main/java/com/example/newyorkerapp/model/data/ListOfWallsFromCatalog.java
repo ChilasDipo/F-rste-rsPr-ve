@@ -17,8 +17,8 @@ public class ListOfWallsFromCatalog {
     }
 
 
-    static Integer[] lengthList = {100,200,300,400,500,600,700};
-    static Integer[] heightList = {100,200,200,200,200,200,200};
+    static Integer[] lengthList = {40,75,75,240,200,75,150};
+    static Integer[] heightList = {180,180,180,180,180,180,180};
     static Boolean[] doorList = {false,false,false,true,true,true,true};
 
 

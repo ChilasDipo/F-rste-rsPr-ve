@@ -100,7 +100,7 @@ public class ContactActivity extends AppCompatActivity {
         buttonKontaktMeasure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(ContactActivity.this, MainActivity.class);
+                Intent myIntent = new Intent(ContactActivity.this, CatalogActivity.class);
                 startActivity(myIntent);
 
             }
@@ -140,7 +140,7 @@ public class ContactActivity extends AppCompatActivity {
 }
 
 private void sendMail(){
-    SendGrid sendGrid = SendGrid.create("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");
+   SendGrid sendGrid = SendGrid.create("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");
     SendGridMail mail = new SendGridMail();
     mail.addRecipient("chil0041@edu.easj.dk", "Chilas");
     mail.setFrom("chil0041@edu.easj.dk", "Chilas");
