@@ -22,7 +22,12 @@ public class FrontPage extends AppCompatActivity {
 
         //Very bad Practice need to find a better place to call it
         FireBaseDAOimpl.buildHashMapsForFetureNameAndPrice();
-        ListOfWallsFromCatalog.buildListOfWallsFromCatalog();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ListOfWallsFromCatalog.buildListOfWallsFromCatalog();
+            }
+        }, 2000);
 
         //TODO read up on this thing
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {

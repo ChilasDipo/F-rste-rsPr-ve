@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -155,7 +156,6 @@ void  initializeOnClickListeners(){
         }
     });
 
-    doorCheckBox.setChecked(mMainActivityViewModel.gethasDoor());
 
 
     doorCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +163,6 @@ void  initializeOnClickListeners(){
         public void onClick(View v) {
             mMainActivityViewModel.setHasDoor(doorCheckBox.isChecked());
             if (doorCheckBox.isChecked()) {
-
                 doorSelection.setVisibility(View.VISIBLE);
                 doorHandleSelection.setVisibility((View.VISIBLE));
 
@@ -181,6 +180,8 @@ void  initializeOnClickListeners(){
 
                     }
                 });
+
+
 
                 ArrayAdapter<String> adapterForDoorGrip = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, mMainActivityViewModel.getListOfDoorgrips());
                 adapterForDoorGrip.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
@@ -204,7 +205,11 @@ void  initializeOnClickListeners(){
 
         }
     });
-
+//sætter checkmark hvis det er det i katalog
+    if (mMainActivityViewModel.gethasDoor()){
+        doorCheckBox.performClick();
+        Log.d("click", "initializeOnClickListeners: ");
+    }
 
 }
     public void changeHeightAndLenght(View view) {

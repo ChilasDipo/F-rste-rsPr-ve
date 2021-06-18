@@ -1,4 +1,6 @@
 package com.example.newyorkerapp.model.data;
+import android.util.Log;
+
 import com.example.newyorkerapp.model.exceptions.HeightTooBig;
 import com.example.newyorkerapp.model.exceptions.HeightTooSmall;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
@@ -44,6 +46,7 @@ public class Wallimpl implements Wall {
         hasSpecielGlas=false;
 
         doorTypes = new DoorTypes(FireBaseDAOimpl.getNamesAndPriceForDoors());
+        Log.d("building", "Wallimpl: " + FireBaseDAOimpl.getNamesAndPriceForDoors() + " " + FireBaseDAOimpl.getNamesAndPriceForDoors());
         glassTypes= new GlassTypes(FireBaseDAOimpl.getNamesAndPriceForGlass());;
 
        setHeightOfTheWall(height);
