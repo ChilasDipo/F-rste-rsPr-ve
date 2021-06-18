@@ -44,115 +44,173 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="409dp"
-        android:layout_height="669dp"
-        android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-    </ScrollView>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/button10"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_button_menu">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/black"
-                android:text="Fag uden døre"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </TableRow>
+                android:background="@drawable/custom_button_menu">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:text="Fag uden døre"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </TableRow>
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fag_m_4_glas_1024x1024" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fag_m_8_glas_1024x1024" />
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fag_m_4_glas_1024x1024" />
 
-        </TableRow>
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fag_m_8_glas_1024x1024" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            </TableRow>
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fag_m_6_glas_1024x1024" />
-        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_button_menu">
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="195dp"
+                    android:layout_height="135dp"
+                    app:srcCompat="@drawable/_fag" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fag med Døre"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </TableRow>
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/_fag3" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fag_m_24_glas_m_enkeltdoer_1024x1024" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fag_m_20_glas_m_enkeltdoer_1024x1024" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fag_m_6_glas_1024x1024" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="167dp">
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fag_m_12_glas_m_enkeltdoer_1024x1024" />
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="211dp"
+                    android:layout_height="141dp"
+                    app:srcCompat="@drawable/_fag3h" />
+            </TableRow>
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/__fah_m_16_glas_m_dobbeltdoer_1024x1024" />
-        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_button_menu">
 
-    </TableLayout>
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fag med Døre"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fag_m_24_glas_m_enkeltdoer_1024x1024" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fag_m_20_glas_m_enkeltdoer_1024x1024" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="147dp"
+                    android:layout_height="142dp"
+                    app:srcCompat="@drawable/_fag24" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="201dp"
+                    android:layout_height="142dp"
+                    app:srcCompat="@drawable/_fag20" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fag_m_12_glas_m_enkeltdoer_1024x1024" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@drawable/__fah_m_16_glas_m_dobbeltdoer_1024x1024" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="171dp"
+                    android:layout_height="129dp"
+                    app:srcCompat="@drawable/_fag12" />
+
+                <ImageView
+                    android:id="@+id/imageView20"
+                    android:layout_width="198dp"
+                    android:layout_height="141dp"
+                    app:srcCompat="@drawable/_fa16" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
