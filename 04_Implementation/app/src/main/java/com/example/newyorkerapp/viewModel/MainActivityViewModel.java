@@ -21,11 +21,9 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
     int selectedWallFromCatalog;
-
-
+    
     public void buildingNeedListForApplicationToWork(){
         FireBaseDAOimpl.buildHashMapsForFetureNameAndPrice();
-
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -33,8 +31,6 @@ public class MainActivityViewModel extends ViewModel {
             }
         }, 2000);
     }
-
-
 
     //Bliver sat udfra det ImageView som blev valgt i kataloget
     public void setSelectedWallFromCatalog(int selectedWallFromCatalog) {
