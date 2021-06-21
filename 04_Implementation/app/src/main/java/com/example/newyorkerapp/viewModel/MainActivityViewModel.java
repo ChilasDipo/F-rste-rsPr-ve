@@ -18,6 +18,7 @@ public class MainActivityViewModel extends ViewModel {
     private Wallimpl wall;
     int selectedWallFromCatalog;
 
+    //Bliver sat udfra det ImageView som blev valgt i kataloget
     public void setSelectedWallFromCatalog(int selectedWallFromCatalog) {
         this.selectedWallFromCatalog = selectedWallFromCatalog;
     }
@@ -32,6 +33,66 @@ public class MainActivityViewModel extends ViewModel {
     }
     //https://medium.com/@atifmukhtar/mvvm-java-model-view-view-model-livedata-148475d7f383
 
+    public ArrayList<String> getListOfDoors(){ return new ArrayList<>(wall.getListOfDoors()); }
+
+    public ArrayList<String> getListOfGlas(){ return new ArrayList<>(wall.getListOfGlass()); }
+
+    public ArrayList<String> getListOfDoorgrips(){ return new ArrayList<>(wall.getListOfDoorGrips()); }
+
+    public ArrayList<Integer> getAdapterForFag(){ return wall.getFagliste(); }
+
+    public ArrayList<Integer> getAdapterForGlas(){ return wall.getGlasliste(); }
+
+    public boolean getHasDoor(){ return wall.getHasDoor(); }
+
+    public int getHeightOfTheWall(){
+        return wall.getHeightOfTheWall();
+    }
+    public int getLengthOfTheWall(){
+        return wall.getLengthOfTheWall();
+    }
+
+    //Når døren bliver valgt i dropdown bliver denne metode kaldt og forsøller væggen hvilken dør brugeren har valgt
+    public void selectDoor(int position){
+        wall.selectDoor(position);
+        wallObject.setValue(wall);
+    }
+    public void selectGlass(int position){
+        wall.selectGlass(position);
+        wallObject.setValue(wall);
+    }
+
+    public void selectAmountOfGlassPerFag(int position){
+        wall.setFinalHeightOfGlas(position);
+        wallObject.setValue(wall);
+    }
+    public void selectAmountOfFag(int position){
+        wall.setFinalLengthOfGlas(position);
+        wallObject.setValue(wall);
+    }
+
+
+    public void setWetRoom(Boolean clicked){
+        wall.setWetRoom(clicked);
+        wallObject.setValue(wall);
+    }
+    public void setHasDoor(Boolean clicked){
+        wall.setHasDoor(clicked);
+        wallObject.setValue(wall);
+    }
+    public void setHasSpecielGlass(Boolean clicked){
+        wall.setHasSpecielGlas(clicked);
+        wallObject.setValue(wall);
+    }
+
+    public void setlenght(int lenght) {
+        try {
+            wall.setLengthOfTheWall(lenght);
+        } catch (InputMangler inputMangler) {
+            inputMangler.printStackTrace();
+        }
+        wallObject.setValue(wall);
+    }
 
     public void setHeight(int height) {
         try {
@@ -45,63 +106,7 @@ public class MainActivityViewModel extends ViewModel {
         }
         wallObject.setValue(wall);
     }
-    public ArrayList<String> getListOfDoors(){
-        return new ArrayList<>(wall.getListOfDoors());
-
-    }
-    public ArrayList<String> getListOfGlas(){
-        return new ArrayList<>(wall.getListOfGlass());
-    }
-    public ArrayList<String> getListOfDoorgrips(){
-        return new ArrayList<>(wall.getListOfDoorGrips());
-    }
-    public boolean gethasDoor(){
-       return wall.getHasDoor();
-    }
-    public void selectDoor(int position){
-        wall.selectDoor(position);
-        wallObject.setValue(wall);
-    }
-    public void selectGlass(int position){
-        wall.selectGlass(position);
-        wallObject.setValue(wall);
-    }
-    public void setWetRoom(Boolean clicked){
-        wall.setWetRoom(clicked);
-        wallObject.setValue(wall);
-    }
-    public void setHasDoor(Boolean clicked){
-        wall.setHasDoor(clicked);
-        wallObject.setValue(wall);
-    }
-    public void sethasSpecielGlass(Boolean clicked){
-        wall.setHasSpecielGlas(clicked);
-        wallObject.setValue(wall);
-    }
-
-    public void setlenght(int lenght) {
-        try {
-            wall.setLengthOfTheWall(lenght);
-        } catch (InputMangler inputMangler) {
-            inputMangler.printStackTrace();
-        }
-        wallObject.setValue(wall);
-    }
-    public void heightPickedFromDropDown(int position){
-        wall.setFinalHeightOfGlas(position);
-        wallObject.setValue(wall);
-    }
-    public void widthPickedFromDropDown(int position){
-        wall.setFinalLengthOfGlas(position);
-        wallObject.setValue(wall);
-    }
-
-    public ArrayList<Integer> getAdapterForFag(){
-        return wall.getFagliste();
-    }
-    public ArrayList<Integer> getAdapterForGlas(){ return wall.getGlasliste(); }
-
-
+    //Opbygger en String til vores textfelt som indenholder information om væggen
     public String getInfoAboutWall(){
         return "Glases højde er  " +
                 wall.getFinalHeightOfGlas() + " cm." +"\n" +
@@ -109,12 +114,5 @@ public class MainActivityViewModel extends ViewModel {
                 wall.getFinalLengthOfGlas() +  " cm." +"\n" +
                 "Væggens pris er " +
                 wall.getPriceOfWall() + " kr.";
-    }
-
-    public int getHeightOfTheWall(){
-        return wall.getHeightOfTheWall();
-    }
-    public int getLengthOfTheWall(){
-        return wall.getLengthOfTheWall();
     }
 }

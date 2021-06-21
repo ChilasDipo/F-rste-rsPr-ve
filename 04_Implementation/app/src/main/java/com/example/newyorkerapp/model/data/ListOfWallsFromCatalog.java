@@ -1,7 +1,5 @@
 package com.example.newyorkerapp.model.data;
 
-import android.util.Log;
-
 import com.example.newyorkerapp.model.exceptions.HeightTooBig;
 import com.example.newyorkerapp.model.exceptions.HeightTooSmall;
 import com.example.newyorkerapp.model.exceptions.InputMangler;

@@ -20,8 +20,12 @@ public class FrontPage extends AppCompatActivity {
         setContentView(R.layout.activity_front_page);
 
 
-        //Very bad Practice need to find a better place to call it
+       /*Kalder metode som opbygger nogle Arraylister i vores database klasse,
+         der bruges til at genmme alt fra navne til priser*/
         FireBaseDAOimpl.buildHashMapsForFetureNameAndPrice();
+        /*Vores metode til at opbygge vores væg opbejkter i kataloget bliver kaldt efter 2000 milisekunder
+         da den bruger en liste der skal være opbygget i Database klassen, hvis der ikke er et delay
+         så ville lisen være tom og der ville komme en nullpointer exception under program kørsel*/
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -29,7 +33,7 @@ public class FrontPage extends AppCompatActivity {
             }
         }, 2000);
 
-        //TODO read up on this thing
+        //Sender os over til den næste Activity i vores program efter 3000 milisekunder
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {

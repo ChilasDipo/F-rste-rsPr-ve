@@ -17,7 +17,7 @@ public class FireBaseDAOimpl{
    private static double feeForWetRoom;
    private static double feeForTransport;
    private static final HashMap<String, Integer> nameAndPricesForDoors = new HashMap<>();
-   private static final HashMap<String, Integer> nameAndPricesForGlas = new HashMap<>();
+   private static final HashMap<String, Integer> nameAndPricesForGlass = new HashMap<>();
    private static final HashMap<String, Integer> nameAndPricesForDoorsHandel = new HashMap<>();
 
    public static HashMap<String, Integer> getNamesAndPriceForDoors(){
@@ -25,7 +25,7 @@ public class FireBaseDAOimpl{
    }
 
    public static HashMap<String, Integer> getNamesAndPriceForGlass(){
-      return nameAndPricesForGlas;
+      return nameAndPricesForGlass;
    }
 
    public static HashMap<String, Integer> getNamesAndPriceForDoorHandel(){
@@ -48,7 +48,7 @@ public class FireBaseDAOimpl{
       return feeForTransport;
    }
 
-   //Metoder som byugger HashMaps til Døre, glas, DørHåndtag og hente enkle værdier ned og sætter sætte dem så de er klar til at bleve gettet.
+   //Metoder som bugger HashMaps til Døre, glas, DørHåndtag og hente enkle værdier ned og sætter sætte dem så de er klar til at bleve gettet.
    //Denne metode bliver kaldt i konstruktor så den har tid til at hente alle værdier ned før de skal bruges så der ikke kommer en nulpointerexception og værdien er blevet sat til det rigte før den bliver gettet
    public static void buildHashMapsForFetureNameAndPrice(){
       //Bygger hashmap for alle typer døre med deres navn og pris
@@ -96,7 +96,7 @@ public class FireBaseDAOimpl{
             {
                String key = datasnapshot.getKey();
                Integer value=datasnapshot.getValue(Integer.class);
-               nameAndPricesForGlas.put(key,value);
+               nameAndPricesForGlass.put(key,value);
             }
          }
 
