@@ -13,12 +13,12 @@ import java.util.HashMap;
 
 public class FireBaseDAOimpl{
    private static double priceOfGlass;
-   private  static double feeForBigGlass ;
-   private  static double feeForWetRoom;
-   private  static double feeForTransport;
+   private static double feeForBigGlass ;
+   private static double feeForWetRoom;
+   private static double feeForTransport;
    private static final HashMap<String, Integer> nameAndPricesForDoors = new HashMap<>();
    private static final HashMap<String, Integer> nameAndPricesForGlas = new HashMap<>();
-   private  static final HashMap<String, Integer> nameAndPricesForDoorsHandel = new HashMap<>();
+   private static final HashMap<String, Integer> nameAndPricesForDoorsHandel = new HashMap<>();
 
    public static HashMap<String, Integer> getNamesAndPriceForDoors(){
       return nameAndPricesForDoors;

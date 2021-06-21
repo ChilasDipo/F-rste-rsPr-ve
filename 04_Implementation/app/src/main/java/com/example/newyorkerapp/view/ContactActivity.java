@@ -120,10 +120,10 @@ public class ContactActivity extends AppCompatActivity {
         });
 
         ArrayList<String> storeList = new ArrayList<>();
-        storeList.add("Store1");
-        storeList.add("Store2");
-        storeList.add("Store3");
-        storeList.add("Store4");
+        storeList.add("X-byg");
+        storeList.add("Stark");
+        storeList.add("Flere Forhandlere");
+        storeList.add("Flere Forhandlere");
     ArrayAdapter<String> adapterForStore = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, storeList);
         adapterForStore.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //https://stackoverflow.com/questions/34798967/use-object-array-list-as-spinner-adapter
         storeDropDown.setAdapter(adapterForStore);
@@ -149,8 +149,6 @@ private void sendMail(){
     SendTask task = new SendTask(sendGrid, mail);
     try {
         SendGridResponse response = task.execute().get();
-        // System.out.println(response.getErrorMessage());
-        //System.out.println(response.isSuccessful());
         Toast toast = Toast.makeText(ContactActivity.this,"Email er blevet sendt", Toast.LENGTH_SHORT);
         toast.show();
     } catch (ExecutionException e) {

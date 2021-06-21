@@ -118,8 +118,6 @@ public class Wallimpl implements Wall {
                 heightOfGlassliste.add(i);
             }
         }
-        System.out.println("Antal glas " + glasliste.toString());
-        System.out.println("glas længder " + heightOfGlassliste.toString());
     }
 
     @Override
@@ -139,8 +137,6 @@ public class Wallimpl implements Wall {
                 lenthOfFagList.add(i);
             }
         }
-        System.out.println("Antal fag " + fagliste.toString());
-        System.out.println("Fag længder " + lenthOfFagList.toString());
     }
     private Boolean calculateWallBigEnouthForExtraFee(){
         if (finalLengthOfGlas*finalHeightOfGlas == 5000){
@@ -151,7 +147,6 @@ public class Wallimpl implements Wall {
     @Override
     public double getPriceOfWall() {
         int amountOfGlassInWall = amountOfFag * amountOfGlas;
-
         //setter prisen for glas og lægger tillæget til for hver condition som er true
         double pricePerGlass = FireBaseDAOimpl.getPriceOfGlass();
         double extraPriceFordoor = 0;

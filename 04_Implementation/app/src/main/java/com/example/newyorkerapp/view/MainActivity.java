@@ -24,9 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner amountOfFagSelection, amountOfGlasSelection, doorSelection,glasSelection,doorHandleSelection;
     MainActivityViewModel mMainActivityViewModel;
     private CheckBox glassCheckBox, wetRoomCheckBox, doorCheckBox;
-
-
      private Button buttonKontaktKontaktOs,buttonKontaktKatalog,sendToContact;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         mMainActivityViewModel.getWall().observe(this, wallimpls -> {
             fag.setText(mMainActivityViewModel.getInfoAboutWall());
-            System.out.println("Observer has been called");
-
         });
 
 
@@ -208,13 +205,11 @@ void  initializeOnClickListeners(){
 //sætter checkmark hvis det er det i katalog
     if (mMainActivityViewModel.gethasDoor()){
         doorCheckBox.performClick();
-        Log.d("click", "initializeOnClickListeners: ");
     }
 
 }
     public void changeHeightAndLenght(View view) {
        mMainActivityViewModel.setHeight(Integer.parseInt((String.valueOf(height.getText()))));
-        System.out.println("Gustav Gustav");
        mMainActivityViewModel.setlenght(Integer.parseInt((String.valueOf(width.getText()))));
 }
     }
