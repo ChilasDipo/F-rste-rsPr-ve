@@ -1,5 +1,8 @@
 package com.example.newyorkerapp.viewModel;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,6 +12,7 @@ import com.example.newyorkerapp.model.data.Wallimpl;
 import com.example.newyorkerapp.model.exceptions.HeightTooBig;
 import com.example.newyorkerapp.model.exceptions.HeightTooSmall;
 import com.example.newyorkerapp.model.exceptions.InputMangler;
+import com.example.newyorkerapp.persistence.FireBaseDAOimpl;
 
 import java.util.ArrayList;
 
@@ -17,6 +21,20 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<Wallimpl> wallObject;
     private Wallimpl wall;
     int selectedWallFromCatalog;
+
+
+    public void buildingNeedListForApplicationToWork(){
+        FireBaseDAOimpl.buildHashMapsForFetureNameAndPrice();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ListOfWallsFromCatalog.buildListOfWallsFromCatalog();
+            }
+        }, 2000);
+    }
+
+
 
     //Bliver sat udfra det ImageView som blev valgt i kataloget
     public void setSelectedWallFromCatalog(int selectedWallFromCatalog) {

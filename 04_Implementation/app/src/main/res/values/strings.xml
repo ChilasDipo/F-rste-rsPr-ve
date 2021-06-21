@@ -22,4 +22,5 @@
     <string name="editText_Main_width_hint">Bredde i cm</string>
     <string name="checkBox_Main_wetroom_text">Vådrum</string>
     <string name="send_To_Contact">Send Tilbud</string>
+
 </resources>

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewYorkerApp">
+        <activity android:name=".view.StartPage"></activity>
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.CatalogActivity" />
         <activity android:name=".view.ContactActivity" />
