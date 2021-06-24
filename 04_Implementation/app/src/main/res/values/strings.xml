@@ -7,12 +7,12 @@
     <string name="editText_Kontakt_send_hint">Send</string>
     <string name="button_Kontakt_kontakt_text">kontakt os</string>
     <string name="button_Kontakt_katalog_text">Katalog</string>
-    <string name="button_Kontakt_measure_text">mål Selv</string>
+    <string name="button_Kontakt_measure_text">Inspiration</string>
     <string name="editText_Kontakt_name_hint">Navn</string>
     <string name="editText_Kontakt_besked_hint">Besked</string>
     <string name="button_Catalog_contact_text">kontakt os</string>
     <string name="button_Catalog_catalog_text">Katalog</string>
-    <string name="button_Catalog_measure_text">mål Selv</string>
+    <string name="button_Catalog_measure_text">Inspiration</string>
     <string name="editText_Main_height_hint">Højde i cm</string>
     <string name="editText_Main_bredde_hint">Brede</string>
     <string name="button_Main_send_text">Ændre Mål</string>

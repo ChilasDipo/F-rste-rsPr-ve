@@ -144,16 +144,23 @@ private void sendMail(){
     SendGridMail mail = new SendGridMail();
     mail.addRecipient("chil0041@edu.easj.dk", "Chilas");
     mail.setFrom("chil0041@edu.easj.dk", "Chilas");
-    mail.setSubject("Hej fra sendgrid");
-    mail.setContent("Hej, det virker nu. Måske.");
+    mail.setSubject("Tilbud for " + getName());
+    String string = "Navn: " + getName()  + "\n" + "Telefon: " + getPhonenumber()  + "\n" + "Email: " + getEmail() + "\n" + "Besked: " + getMessage();
+    mail.setContent(string);
     SendTask task = new SendTask(sendGrid, mail);
     try {
         SendGridResponse response = task.execute().get();
+        System.out.println(response.isSuccessful());
         Toast toast = Toast.makeText(ContactActivity.this,"Email er blevet sendt", Toast.LENGTH_SHORT);
         toast.show();
+        System.out.println("Working");
     } catch (ExecutionException e) {
         e.printStackTrace();
+        Toast toast = Toast.makeText(ContactActivity.this,"Error I sending af mail", Toast.LENGTH_SHORT);
+        toast.show();
     } catch (InterruptedException e) {
+        Toast toast = Toast.makeText(ContactActivity.this,"Error I sending af mail", Toast.LENGTH_SHORT);
+        toast.show();
         e.printStackTrace();
     }
 }

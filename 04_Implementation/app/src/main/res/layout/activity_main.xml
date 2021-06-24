@@ -40,7 +40,7 @@
         android:layout_height="60dp"
         android:background="@drawable/custom_buttom_higlight"
         android:text="@string/button_Kontakt_measure_text"
-        android:textColor="#BB8C54"
+        android:textColor="#FFFFFF"
         app:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonKontaktKatalog2"

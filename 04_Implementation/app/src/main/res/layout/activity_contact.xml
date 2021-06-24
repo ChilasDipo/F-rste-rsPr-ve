@@ -108,15 +108,14 @@
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
-        android:layout_width="327dp"
-        android:layout_height="275dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="330dp"
+        android:layout_height="268dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/editText_Kontakt_besked_hint"
-        android:inputType="textMultiLine"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storeDropDown" />
 

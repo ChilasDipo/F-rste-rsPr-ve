@@ -22,6 +22,8 @@ public class FrontPage extends AppCompatActivity {
         setContentView(R.layout.activity_front_page);
 
         //Skaber en Forbindelse til Vores ViewModel og kalder funktionen til at opbygge vores lister med data fra databasen
+
+
         mMainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         mMainActivityViewModel.buildingNeedListForApplicationToWork();
 
